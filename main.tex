@@ -18,8 +18,19 @@
 \bibliographystyle{apj}
 
 % Add your own macros here:
-
-
+\newcommand{\snrb}{{$SNR_b$}}
+\newcommand{\z}{{$z$}}
+\newcommand{\bu}{{$u$}}
+\newcommand{\bg}{{$g$}}
+\newcommand{\br}{{$r$}}
+\newcommand{\bi}{{$i$}}
+\newcommand{\bz}{{$z$}}
+\newcommand{\by}{{$y$}}
+\newcommand{\salt}{SALT2}
+\newcommand{\xnorm}{{$x_0$}}
+\newcommand{\strech}{{$x_1$}}
+\newcommand{\col}{{$c$}}
+\newcommand{\daymax}{{$T_0$}}
 
 % ======================================================================
 
@@ -51,7 +62,29 @@
 
 \section{Type Ia supernovae as probe for assessing observing strategy}
 \label{sec:snprobes}
-Type Ia supernovae are transient astronomical events resulting from a powerful and luminous explosion of a white dwarf. They are identified by their brightness evolution, with a luminosity peak about 15 days after explosion, a slow decrease lasting few months. It is expected that all type Ia supernovae observed in the DD fields in LSST will be identified from spectral features. The supernovae parameters will be estimated from the light curve shape extracted from accurately calibrated (photometry and astrometry) exposures. The quality of the light curves relies on the sampling (every three days) and on the number of visits.
+Type Ia supernovae are transient astronomical events resulting from a powerful and luminous explosion of a white dwarf. They are identified by their brightness evolution, with a luminosity peak about 15 days after explosion, and a slow decrease lasting up to few months. It is expected that all type Ia supernovae observed in the DD fields in LSST will be identified from spectral features. Accurate supernova parameters will be estimated from well-measured light curves characterized by a sampling of few days and high Signal-to-Noise Ratio per band (\snrb). These two quality criteria are determined at the first order by two key parameters of observing strategies: the cadence of observation, and the number of visits per band.
+\par
+Rest-frame wavelengths of type Ia supernovae range from $\sim$380 nm (blue cut-off) to $\sim$800 nm (red cut-off). Since the flux fraction per band (observer frame) varies with the redshift, these two limits have an impact on the possible list of bands with minimal flux useable to observe supernovae (Tab. \ref{tab:zfilters}): only three bands (\bi\bz\by) are useable in the redshift range 0.64-0.98 and only two (\bz\by) for redshifts higher than $\sim$1. 
+
+\begin{table}[!htbp]
+  \caption{Available bands with minimal flux vs redshift.}\label{tab:zfilters}
+  \begin{center}
+    \begin{tabular}{c|c}
+      \hline
+      \hline
+      Redshift range & available bands \\
+      \hline
+      0.01-0.1 & \bg\br\bi\\
+      0.1-0.3 & \bg\br\bi\bz \\
+      0.3-0.64 & \br\bi\bz\by \\
+      0.64-0.98 & \bi\bz\by \\
+      $\geq$ 0.98 & \bz\by \\
+      \hline
+      \end{tabular}
+  \end{center}
+\end{table}
+
+Type Ia supernovae may be described by five parameters (\salt~model): stretch\strech, color \col, time of maximum luminosity \daymax, normalization of the SED \xnorm, and the redshift \z. 
 
 \section{DD program design known constraints}
 \label{sec:design}
