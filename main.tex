@@ -30,10 +30,11 @@
 \newcommand{\bz}{{$z$}}
 \newcommand{\by}{{$y$}}
 \newcommand{\salt}{SALT2}
-\newcommand{\xnorm}{{$x_0$}}
-\newcommand{\strech}{{$x_1$}}
-\newcommand{\col}{{$c$}}
-\newcommand{\daymax}{{$T_0$}}
+\newcommand{\xnorm}{$x_0$}
+\newcommand{\strech}{$x_1$}
+\newcommand{\snstrecht}{$x_1$}
+\newcommand{\col}{$c$}
+\newcommand{\daymax}{$T_0$}
 \newcommand{\sigc}{{$\sigma_c$}}
 \newcommand{\sigmu}{{$\sigma_\mu$}}
 \newcommand{\zlim}{{$z_{lim}$}}
@@ -48,8 +49,12 @@
 \newcommand{\wfirst}{{\sc WFIRST}}
 \newcommand{\sne}{{SNe Ia}}
 \newcommand{\degsq}{{deg$^2$}}
-
-
+\newcommand{\nsn}{{nSN($z\leq z_{lim}$}}
+\newcommand{\zcomp}{{$z_{completeness}$}}
+\newcommand{\xcfaint}={$(x_1,c)=(-2.0,0.2)$}
+\newcommand{\snx}{$x_0$}
+\newcommand{\sncolor}{$c$}
+\newcommand{\redshift}{$z$}
 
 % ======================================================================
 
@@ -90,6 +95,11 @@ This paper compiles a set of studies related to the DD program of LSST. The main
 
 \section{Metrics to assess observing strategies}
 \label{sec:metrics}
+The metrics used to assess observing strategies are estimated from full simulation of light curves. We have used the SALT2 model (\citealt{Guy_2007,Guy_2010}) where a \sne~is described by five parameters: \snx, the normalization of the SED sequence; \snstretch, the stretch; \sncolor, the color; \daymax, the day of maximum luninosity; and $z$, the redshift. a flat-$\Lambda$CDM model was used to estimate cosmological distances, with $H_0$ = 70 km s$^{-1}$, $\Omega_m$ = 0.3 and $\Omega_\Lambda$ = 0.7.
+\par
+We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) LC points before (after) maximum luminosity; at least one point with a phase lower than -10 and higher than 20; \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria. The redshift of the complete sample, \zcomp, is the redshift limit of a faint supernova defined by \xcfaint. 
+
+
 
 \section{Analysis of current simulations}
 \label{sec:analysis}
