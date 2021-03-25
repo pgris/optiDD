@@ -20,7 +20,7 @@
 \bibliographystyle{apj}
 
 % Add your own macros here:
-\newcommand{\snrb}{{$SNR_b$}}
+\newcommand{\snrb}{{$SNR^b$}}
 \newcommand{\snrbmin}{{$SNR_b^{min}$}}
 \newcommand{\z}{{$z$}}
 \newcommand{\bu}{{$u$}}
@@ -50,11 +50,18 @@
 \newcommand{\sne}{{SNe Ia}}
 \newcommand{\degsq}{{deg$^2$}}
 \newcommand{\nsn}{{nSN($z\leq z_{lim}$}}
-\newcommand{\zcomp}{{$z_{completeness}$}}
+\newcommand{\zcomp}{{$z_{complete}$}}
+\newcommand{\zcompb}{{$z_{complete}^{0.95}$}}
 \newcommand{\xcfaint}={$(x_1,c)=(-2.0,0.2)$}
 \newcommand{\snx}{$x_0$}
 \newcommand{\sncolor}{$c$}
 \newcommand{\redshift}{$z$}
+\newcommand{\per}{$\%$}
+\newcommand{\seq}{$\sim$}
+\newcommand{\nvisits}{$N_{visits}$}
+\newcommand{\nvisitsb}{$N_{visits}^b$}
+
+
 
 % ======================================================================
 
@@ -84,7 +91,7 @@ Type Ia supernovae(\sne) are transient astronomical events resulting from a powe
 \par
 The stated ambition of the LSST Supernovae program is to maximize the sample size of well-measured type Ia supernovae while reducing systematic uncertainties on cosmological parameters. Increasing the statistics in the Hubble diagram requires (1) advances in the measurement of the distances (i.e.  a control at the per-mil level of the photometry and survey flux calibration, and a progress in standardization technique) (2) a better control of the astrophysical environment and its potential impacts on the SN light curves and distances (local host properties, absorption) (3) a better control of the SN diversity (SN~Ia sub-populations, population drift with redshift) (4) a precise determination of the survey selection function (SN identification, residual contamination by non-SN~Ia's as a function of redshift).
 \par
- The ten-year Rubin Observatory Legacy Survey of Space and Time (LSST) will image billions of objects in six colors. 80\% to 90\% of the observing time will be dedicated to Wide Fast Deep(WFD) primary survey, which will cover half of the sky ($\sim$ 18000 \degsq) at a ''universal'' cadence. The remaining observing time will be shared among other programs (mini-surveys) including intensive scanning of a set of Deep Drilling (DD) fields. It is expected that about 10\% (100\%) of \sne~observed in the WFD (DD) survey will be identified from spectral features. Accurate supernova parameters will be estimated from well-measured light curves characterized by a sampling of few days and high Signal-to-Noise Ratio per band (\snrb).  As a consequence all the studies presented in this paper rely on the supernova light curves only.  Obtaining high quality light curves is therefore a key design point of the SN survey:  the average quality of the light curves depends primarily on the observing strategy.
+ The ten-year Rubin Observatory Legacy Survey of Space and Time (LSST) will image billions of objects in six colors. 80 to 90\per of the observing time will be dedicated to Wide Fast Deep(WFD) primary survey, which will cover half of the sky ($\sim$ 18000 \degsq) at a ''universal'' cadence. The remaining observing time will be shared among other programs (mini-surveys) including intensive scanning of a set of Deep Drilling (DD) fields. It is expected that about 10\per (100\per) of \sne~observed in the WFD (DD) survey will be identified from spectral features. Accurate supernova parameters will be estimated from well-measured light curves characterized by a sampling of few days and high Signal-to-Noise Ratio per band (\snrb).  As a consequence all the studies presented in this paper rely on the supernova light curves only.  Obtaining high quality light curves is therefore a key design point of the SN survey:  the average quality of the light curves depends primarily on the observing strategy.
 \par
 In a recent paper (ref), the Dark Energy Science Collaboration (DESC) has presented an analysis of the WFD survey of observing strategies simulated by the project\footnote{These strategies are available here: }. We have concluded that an unprecedented number of high quality \sne~will be observed in the WFD survey (between 120k and 170k) up to redshifts $z~$0.3. The DD SN programm is necessary for obtaining a sample of high-redshift (up to $z\simeq$1) and well-measured supernovae which improves cosmological constraints from SNIa. Achieving Stage IV dark energy goals will critically rely on the deep drilling fields (DDFs) of LSST.
 \par
@@ -106,8 +113,35 @@ We rely on two metrics to assess observing strategies: the redshift limit \zlim,
 
 \section{Towards an optimization of the DD survey}
 \label{sec:opti}
+\subsection{Optimization method}
+The analysis of the most recent simulations have shown (see \ref{sec:analysis}) that it was difficult, with the proposed cadences of observation, filter allocation and season lengths, to collect complete samples of \sne~with redshift higher than \zcompb\seq 0.55-0.6 for a DD budget of \seq 5\per.  A high budget (\seq 13.5\per) is requested to reach \zcompb\seq 0.65. These redshift limits are well below the ambitious goal of \zcompb\seq1. But we do not know, at this stage, whether this goal is achievable while respecting the design requirements (sec. \ref{sec:design}). We propose in the following a method to adress this question.\par
+The value of the DD budget depends primarily on 4 parameters: the number of fields to observe, the season length (per field and per season), the cadence of observation (per field and per season), and the number of visits \nvisits~per observing night, the sum of the visits per filter \nvisitsb. \nvisitsb~affect the flux measurement uncertainties and the Signal-to-Noise Ratio per filter \snrb~of the light curves defined by:
+\begin{equation}
+  SNR^b &=& \sqrt{\sum_{i=1}^{n^b}{\left({{f_i^b}\over{\sigma_i^b}}\right)^2}}
+  \label{eq:opt1}
+\end{equation}
+where $f^b$, and $\sigma^b$ are the fluxes and fluxes uncertainties. The summation runs over the number of light curve points. In the background-dominated regime one has $\sigma_i^b \simeq \sigma_5^b$ where $\sigma_5^b$ is equal by definition to
+\begin{equation}
+ \sigma_5^b &=& {{f_5^b}\over{5}}
+\end{equation}
+where $f_ 5^b$ is the five-sigma flux related to the five-sigma depth magnitude $m_5^b$ through:
+\begin{equation}
+  m_5^b &=& -2.5 \log f_5^b+zp^b
+\end{equation}
+where $zp^b$ is the zero point of the considered filter.  $m_5^b$ is related to \nvisitsb through:
+\begin{equation}
+  m_5^b - m_5^{b, single visit} & = & 1.25 \log(N_{visits}^b)
+  \label{eq:opt4}
+\end{equation}
+where $m_5^{b, single visit}$ is the five-sigma depth corresponding to a single visit, a parameter depending on observing conditions. These equations \eqref{eq:opt1,eq:opt4} describe the relationship between \snrb~ and \nvisitsb.
+\\
 
-\section{High-redshifts scenarios}
+
+
+These results raise two questions related to the LSST DD survey: what are the prerequesites to reach \zcompb\seq1? For a given set of observing strategy parameters (i.e. number of fields, season length, cadence of observation), what is the estimated budget 
+
+
+\section{Rolling DD scenarios: probing high-redshift domains}
 \label{sec:scenario}
 
 % ----------------------------------------------------------------------
@@ -226,6 +260,8 @@ where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season
 \section{Optimization of the LSST Deep Drilling  program}
 \label{sec:optimization}
 \subsection{Optimization method}
+
+
 \subsection{Results}
 
 % ----------------------------------------------------------------------
