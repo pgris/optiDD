@@ -15,13 +15,19 @@
 \usepackage{rotating}
 \usepackage{graphicx}
 \usepackage{diagbox}
+
 %\usepackage{pdflscape}
 \graphicspath{{./}{./figures/}}
 \bibliographystyle{apj}
 
 % Add your own macros here:
-\newcommand{\snrb}{{$SNR^b$}}
-\newcommand{\snrbmin}{{$SNR_b^{min}$}}
+\newcommand{\snrb}{\mbox{$SNR^b$}}
+\newcommand{\snrbmin}{\mbox{$SNR^b_{min}$}}
+\newcommand{\snrg}{\mbox{$SNR^g$}}
+\newcommand{\snrr}{\mbox{$SNR^r$}}
+\newcommand{\snri}{\mbox{$SNR^i$}}
+\newcommand{\snrz}{\mbox{$SNR^z$}}
+\newcommand{\snry}{\mbox{$SNR^y$}}
 \newcommand{\z}{{$z$}}
 \newcommand{\bu}{{$u$}}
 \newcommand{\bg}{{$g$}}
@@ -32,12 +38,12 @@
 \newcommand{\salt}{SALT2}
 \newcommand{\xnorm}{$x_0$}
 \newcommand{\strech}{$x_1$}
-\newcommand{\snstrecht}{$x_1$}
+\newcommand{\snstrech}{\mobx{$x_1$}}
 \newcommand{\col}{$c$}
 \newcommand{\daymax}{$T_0$}
-\newcommand{\sigc}{{$\sigma_c$}}
-\newcommand{\sigmu}{{$\sigma_\mu$}}
-\newcommand{\zlim}{{$z_{lim}$}}
+\newcommand{\sigc}{\mbox{$\sigma_c$}}
+\newcommand{\sigmu}{\mbox{$\sigma_\mu$}}
+\newcommand{\zlim}{\mbox{$z_{lim}$}}
 \newcommand{\cosmos}{{\sc COSMOS}}
 \newcommand{\elais}{{\sc ELAIS-S1}}
 \newcommand{\xmm}{{\sc XMM-LSS}}
@@ -50,16 +56,19 @@
 \newcommand{\sne}{{SNe Ia}}
 \newcommand{\degsq}{{deg$^2$}}
 \newcommand{\nsn}{{nSN($z\leq z_{lim}$}}
-\newcommand{\zcomp}{{$z_{complete}$}}
-\newcommand{\zcompb}{{$z_{complete}^{0.95}$}}
-\newcommand{\xcfaint}={$(x_1,c)=(-2.0,0.2)$}
-\newcommand{\snx}{$x_0$}
-\newcommand{\sncolor}{$c$}
-\newcommand{\redshift}{$z$}
+\newcommand{\zcomp}{\mbox{$z_{complete}$}}
+\newcommand{\zcompb}{\mbox{$z_{complete}^{0.95}$}}
+\newcommand{\snfaint}={\mbox{$(\snstretch,\sncolor)=(-2.0,bobo)$}}
+\newcommand{\snx}{\mbox{$x_0$}}
+\newcommand{\sncolor}{\mbox{$c$}}
+\newcommand{\redshift}{\mbox{$z$}}
 \newcommand{\per}{$\%$}
 \newcommand{\seq}{$\sim$}
 \newcommand{\nvisits}{$N_{visits}$}
-\newcommand{\nvisitsb}{$N_{visits}^b$}
+\newcommand{\nvisitsb}{\mbox{$N_{visits}^b$}}
+\newcommand{\nvisitsbmin}{\mbox{$N_{visits,min}^b$}}
+\newcommand{\nvisitsy}{$N_{visits}^y$}
+\newcommand{\nvisitsall}{$N_{visits}^g,N_{visits}^r,N_{visits}^i,N_{visits}^z,N_{visits}^y$}
 
 
 
@@ -99,12 +108,75 @@ This paper compiles a set of studies related to the DD program of LSST. The main
 
 \section{Deep Drilling survey design constraints}
 \label{sec:design}
+\begin{itemize}
+\item number of fields: the location of four DD fields (\cosmos,\elais,\xmm,\cdfs) are already fixed (Tab. \ref{tab:locddf}). Two could be added in the south region (\adfa,\adfb) to ensure a synergy with \euclid~and \wfirst~surveys, at the begining and at the end of the LSST survey, respectively. 
+\item season length: the number of exploding supernovae is proportional to the season duration. Season lengths of at least 6 months are required to maximize the size of the sample of observed type Ia supernovae.
+\item cadence: observations every $\sim$3 days would lead to an adequate sampling of the light curves. 
+\item DD budget: it is expected that 5-6$\%$ of the total number of LSST visits will be alloted to the DD program and shared among science topics interested by DD observations (such as AGN, supernovae, ...).  This limited budget is related to the total number of visits per observing night through the relation:
+  \begin{eqnarray}
+  DD_{budget} &=& N_{visits}^{DD}/N_{visits}^{tot} \\
+  N_{visits}^{DD} &=& \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times SL^{ij}\times 30/Cad^{ij} \\
+  N_{visits,night}^{ij} &=& \sum_{b} N_{visits,night}^{ij}_b \text{ with b=grizy}
+  \label{eq:ddbudget}
+  \end{eqnarray}
+where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $SL$ the season length, $Cad$ the cadence of observations, and $N_{visits, night}$ the total number of visits per observation night. $N_{visits,night}$ has been estimated for a cadence of 3 days, season lengths of 6 months, and $N_{visits}^{tot$}$ = (Tab. \ref{tab:ddbudget}). $N_{visits,night}$ largely depends on the observing strategy:   
+  
+ \end{itemize}
+
+\begin{table}[!htbp]
+  \caption{Location of the DD fields considered in this study.}\label{tab:locddf}
+  \begin{center}
+    \begin{tabular}{c|c|c}
+      \hline
+      \hline
+      Field & Central RA & Central Dec\\ 
+      Name & (J2000)  & (J2000)\\
+      \hline
+     \elais & 00:37:48 & −44:01:30 \\
+     \xmm & 02:22:18 &  −04:49:00 \\
+     \cdfs & 03:31:55 & −28:07:00 \\
+     \cosmos &10:00:26 & +02:14:01 \\
+     \hline 
+     \adfa & 04:51:00& −52:55:00 \\
+     \adfb & 04:35:00 & −54:40:00 \\
+      \hline
+      \hline
+      \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[!htbp]
+  \caption{DD budget as a function of the cadence of observation for a configuration of 5 fields. The first/second number corresponds to 10/2 seasons of observation per field. }\label{tab:ddbudget}
+  \begin{center}
+    \begin{tabular}{c|c|c|c}
+      \hline
+      \hline
+      \diagbox[innerwidth=3.cm,innerleftsep=-1.cm,height=3\line]{budget}{cadence} & 1 & 2 & 3\\
+      \hline
+      6\% & 13/66 & 26/132 & 40/199 \\
+      10\% & 22/111 & 44/221 & 66/332 \\
+      15\% & 33/166 & 66/332 & 99/498 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 \section{Metrics to assess observing strategies}
 \label{sec:metrics}
 The metrics used to assess observing strategies are estimated from full simulation of light curves. We have used the SALT2 model (\citealt{Guy_2007,Guy_2010}) where a \sne~is described by five parameters: \snx, the normalization of the SED sequence; \snstretch, the stretch; \sncolor, the color; \daymax, the day of maximum luninosity; and $z$, the redshift. a flat-$\Lambda$CDM model was used to estimate cosmological distances, with $H_0$ = 70 km s$^{-1}$, $\Omega_m$ = 0.3 and $\Omega_\Lambda$ = 0.7.
 \par
-We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) LC points before (after) maximum luminosity; at least one point with a phase lower than -10 and higher than 20; \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria. The redshift of the complete sample, \zcomp, is the redshift limit of a faint supernova defined by \xcfaint. 
+We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) LC points before (after) maximum luminosity; at least one point with a phase lower than -10 and higher than 20; \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria. The redshift of the complete sample, \zcomp, is the redshift limit of a faint supernova defined by \snfaint.
+\par
+The estimation of \zlim~is mainly driven by the selection on the error of the color, \sigc$\leq$0.04. \sigc~reflects the quality of the collected light curves, result of the cadence of observation (sampling) and of the flux uncertainty measurements. Hence the \sigc~estimation is driven by the Signal-to-Noise Ratio (SNR) per band defined by:
+\begin{equation}
+  SNR^b &=& \sqrt{\sum_{i=1}^{n^b}{\left({{f_i^b}\over{\sigma_i^b}}\right)^2}}
+  \label{eq:snrb}
+\end{equation}
+where $f^b$, and $\sigma^b$ are the fluxes and fluxes uncertainties. The summation runs over the number of light curve points. We may summarize the link between \zlim~and \snrb~by:
+\begin{equation}
+  \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\snrb \geq \snrbmin)
+ \label{eq:zlimsnr}
+\end{equation}
 
 
 
@@ -115,12 +187,7 @@ We rely on two metrics to assess observing strategies: the redshift limit \zlim,
 \label{sec:opti}
 \subsection{Optimization method}
 The analysis of the most recent simulations have shown (see \ref{sec:analysis}) that it was difficult, with the proposed cadences of observation, filter allocation and season lengths, to collect complete samples of \sne~with redshift higher than \zcompb\seq 0.55-0.6 for a DD budget of \seq 5\per.  A high budget (\seq 13.5\per) is requested to reach \zcompb\seq 0.65. These redshift limits are well below the ambitious goal of \zcompb\seq1. But we do not know, at this stage, whether this goal is achievable while respecting the design requirements (sec. \ref{sec:design}). We propose in the following a method to adress this question.\par
-The value of the DD budget depends primarily on 4 parameters: the number of fields to observe, the season length (per field and per season), the cadence of observation (per field and per season), and the number of visits \nvisits~per observing night, the sum of the visits per filter \nvisitsb. \nvisitsb~affect the flux measurement uncertainties and the Signal-to-Noise Ratio per filter \snrb~of the light curves defined by:
-\begin{equation}
-  SNR^b &=& \sqrt{\sum_{i=1}^{n^b}{\left({{f_i^b}\over{\sigma_i^b}}\right)^2}}
-  \label{eq:opt1}
-\end{equation}
-where $f^b$, and $\sigma^b$ are the fluxes and fluxes uncertainties. The summation runs over the number of light curve points. In the background-dominated regime one has $\sigma_i^b \simeq \sigma_5^b$ where $\sigma_5^b$ is equal by definition to
+As described in \ref{eq:ddbudget} the DD budget depends primarily on 4 parameters: the number of fields to observe, the season length (per field and per season), the cadence of observation (per field and per season), and the number of visits \nvisitsb~per filter and per observing night. \nvisitsb~affect \snrb~through the flux measurement uncertainties  $\sigma_i^b$. In the background-dominated regime one has $\sigma_i^b \simeq \sigma_5^b$ where $\sigma_5^b$ is equal by definition to
 \begin{equation}
  \sigma_5^b &=& {{f_5^b}\over{5}}
 \end{equation}
@@ -130,15 +197,25 @@ where $f_ 5^b$ is the five-sigma flux related to the five-sigma depth magnitude 
 \end{equation}
 where $zp^b$ is the zero point of the considered filter.  $m_5^b$ is related to \nvisitsb through:
 \begin{equation}
-  m_5^b - m_5^{b, single visit} & = & 1.25 \log(N_{visits}^b)
+  m_5^b - m_5^{b, single~visit} & = & 1.25 \log(N_{visits}^b)
   \label{eq:opt4}
 \end{equation}
-where $m_5^{b, single visit}$ is the five-sigma depth corresponding to a single visit, a parameter depending on observing conditions. These equations \eqref{eq:opt1,eq:opt4} describe the relationship between \snrb~ and \nvisitsb.
+where $m_5^{b, single~visit}$ is the five-sigma depth corresponding to a single visit, a parameter depending on observing conditions. These equations \eqref{eq:opt1}-\eqref{eq:opt4} describe the relationship between \snrb~ and \nvisitsb. The request $\snrb~\geq~\snrbmin$ is equivalent to $\nvisitsb~\geq~\nvisitsbmin$ and equ. \eqref{eq:zlimsnr} may be written:
+\begin{equation}
+  \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\nvisitsb~\geq~\nvisitsbmin)
+ \label{eq:zlimnvisits}
+\end{equation}
 \\
+The relations \eqref{eq:zlimsnr} and \eqref{eq:zlimnvisits} are not univocal. A lot of \snrb~combinations lead in fact to the same result and constraints have to be applied to choose the optimal configuration. We have performed a systematic scan of the \snr~parameter space (\snrg,\snrr,\snri,\snrz,\snry) and picked combinations with \sigc$\simeq$0.04.  The optimal solution is selected by minimizing the total number of visits per observing night and by fixing a maximum number of visits in the y-band (namely \nvisitsy$\leq$20). This selection aims at reducing the systematic (potentially severe) effects of the \by~band. The result is displayed on Fig. \ref{fig:nvisits_zlim} for a 1 day cadence. 
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.95\textwidth]{nvisits_zlim.png}
+ \caption{Number of visits as a function of the completeness redshift. 250 visits {\it with} the following filter allocation (\nvisitsall)=(2,2,98,130,18) are requested per observing night to reach \zcomp\seq0.9.}\label{fig:nvisits_zlim}
+\end{center}
+\end{figure}
 
 
-
-These results raise two questions related to the LSST DD survey: what are the prerequesites to reach \zcompb\seq1? For a given set of observing strategy parameters (i.e. number of fields, season length, cadence of observation), what is the estimated budget 
 
 
 \section{Rolling DD scenarios: probing high-redshift domains}
@@ -191,55 +268,7 @@ Since \sigc~varies with the redshift  (Fig. \ref{fig:sigc_z}, top), the requirem
 
 Up to approximately 10\% of LSST observing time will be dedicated to other programs, including intensive observation of a set of Deep Drilling Fields. 
 
-\begin{itemize}
-\item number of fields: the location of four DD fields (\cosmos,\elais,\xmm,\cdfs) are already fixed (Tab. \ref{tab:locddf}). Two could be added in the south region (\adfa,\adfb) to ensure a synergy with \euclid~and \wfirst~surveys, at the begining and at the end of the LSST survey, respectively. 
-\item season length: the number of exploding supernovae is proportional to the season duration. Season lengths of at least 6 months are required to maximize the size of the sample of observed type Ia supernovae.
-\item cadence: observations every $\sim$3 days would lead to an adequate sampling of the light curves. 
-\item DD budget: it is expected that 5-6$\%$ of the total number of LSST visits will be alloted to the DD program and shared among science topics interested by DD observations (such as AGN, supernovae, ...).  This limited budget is related to the total number of visits per observing night through the relation:
-  \begin{eqnarray}
-  DD_{budget} &=& N_{visits}^{DD}/N_{visits}^{tot} \\
-  N_{visits}^{DD} &=& \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times SL^{ij}\times 30/Cad^{ij} 
-  \end{eqnarray}
-where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $SL$ the season length, $Cad$ the cadence of observations, and $N_{visits, night}$ the total number of visits per observation night. $N_{visits,night}$ has been estimated for a cadence of 3 days, season lengths of 6 months, and $N_{visits}^{tot$}$ = (Tab. \ref{tab:ddbudget}). $N_{visits,night}$ largely depends on the observing strategy:   
-  
- \end{itemize}
 
-\begin{table}[!htbp]
-  \caption{Location of the DD fields considered in this study.}\label{tab:locddf}
-  \begin{center}
-    \begin{tabular}{c|c|c}
-      \hline
-      \hline
-      Field & Central RA & Central Dec\\ 
-      Name & (J2000)  & (J2000)\\
-      \hline
-     \elais & 00:37:48 & −44:01:30 \\
-     \xmm & 02:22:18 &  −04:49:00 \\
-     \cdfs & 03:31:55 & −28:07:00 \\
-     \cosmos &10:00:26 & +02:14:01 \\
-     \hline 
-     \adfa & 04:51:00& −52:55:00 \\
-     \adfb & 04:35:00 & −54:40:00 \\
-      \hline
-      \hline
-      \end{tabular}
-  \end{center}
-\end{table}
-
-\begin{table}[!htbp]
-  \caption{Total number of visits per night of observations for two number of fields (5 and 6) and two budgets (6\% and 10\%). The first (second) number correspond to 10 (2) seasons of observation per field. }\label{tab:ddbudget}
-  \begin{center}
-    \begin{tabular}{c|c|c}
-      \hline
-      \hline
-      \diagbox[innerwidth=3.cm,innerleftsep=-1.cm,height=3\line]{$DD_{budget}$}{$N_{fields}$} & 5 & 6\\
-      \hline
-      6\% & 48/239& 40/199\\
-      10\% & 80/398& 66/331 \\
-      \hline
-    \end{tabular}
-  \end{center}
-\end{table}
 
 \section{Analysis of recent simulations}
 
