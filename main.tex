@@ -146,7 +146,7 @@ where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season
 \end{table}
 
 \begin{table}[!htbp]
-  \caption{DD budget as a function of the cadence of observation for a configuration of 5 fields. The first/second number corresponds to 10/2 seasons of observation per field. }\label{tab:ddbudget}
+  \caption{Total number of visits (per observing night) as a function of the DD budget and the cadence of observation for a configuration of 5 fields. The first/second number corresponds to 10/2 seasons of observation per field. }\label{tab:ddbudget}
   \begin{center}
     \begin{tabular}{c|c|c|c}
       \hline
@@ -214,8 +214,23 @@ The relations \eqref{eq:zlimsnr} and \eqref{eq:zlimnvisits} are not univocal. A 
  \caption{Number of visits as a function of the completeness redshift. 250 visits {\it with} the following filter allocation (\nvisitsall)=(2,2,98,130,18) are requested per observing night to reach \zcomp\seq0.9.}\label{fig:nvisits_zlim}
 \end{center}
 \end{figure}
+We may then use \ref{eq:zliminvisits} and \ref{fig:nvisits_zlim} to estimate the redshift of completeness corresponding to the number of visits of \ref{tab:ddbudget}. The conclusions of the result (Tab. \ref{tab:zlim}) are (a) it is very difficult to reach completeness redshifts higher than 0.6-0.7 if all fields are observed for ten years ; (b) the only way to explore higher  redshift domains is to reduce the number of seasons of observation.
 
-
+\begin{table}[!htbp]
+  \caption{Redshift of completeness as a function of the DD budget and the cadence of observation for a configuration of 5 fields. The first/second number corresponds to 10/2 seasons of observation per field. The redshift of completeness are independent on the cadence since the total SNR per band, \snrb,are identical.}\label{tab:zlim}
+  \begin{center}
+    \begin{tabular}{c|c|c|c}
+      \hline
+      \hline
+      \diagbox[innerwidth=3.cm,innerleftsep=-1.cm,height=3\line]{budget}{cadence} & 1 & 2 & 3\\
+      \hline
+      6\% &\multicolumn{3}{c}{0.62/0.74} \\
+      10\% & \multicolumn{3}{c}{0.66/0.79} \\
+      15\% & \multicolumn{3}{c}{0.68/0.83}\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 
 \section{Rolling DD scenarios: probing high-redshift domains}
@@ -264,7 +279,7 @@ Since \sigc~varies with the redshift  (Fig. \ref{fig:sigc_z}, top), the requirem
 
 
 \section{LSST Deep Drilling program design constraints}
-\label{sec:design}
+\label{sec:designb}
 
 Up to approximately 10\% of LSST observing time will be dedicated to other programs, including intensive observation of a set of Deep Drilling Fields. 
 
