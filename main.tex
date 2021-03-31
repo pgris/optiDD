@@ -15,6 +15,7 @@
 \usepackage{rotating}
 \usepackage{graphicx}
 \usepackage{diagbox}
+\usepackage{multirow}
 
 %\usepackage{pdflscape}
 \graphicspath{{./}{./figures/}}
@@ -55,7 +56,8 @@
 \newcommand{\wfirst}{{\sc WFIRST}}
 \newcommand{\sne}{{SNe Ia}}
 \newcommand{\degsq}{{deg$^2$}}
-\newcommand{\nsn}{{nSN($z\leq z_{lim}$}}
+\newcommand{\nsn}{{$N_{SN}(z\leq z_{lim})$}}
+\newcommand{\nsncomp}{{$N_{SN}(z\leq z_{complete})$}}
 \newcommand{\zcomp}{\mbox{$z_{complete}$}}
 \newcommand{\zcompb}{\mbox{$z_{complete}^{0.95}$}}
 \newcommand{\snfaint}={\mbox{$(\snstretch,\sncolor)=(-2.0,bobo)$}}
@@ -69,7 +71,7 @@
 \newcommand{\nvisitsbmin}{\mbox{$N_{visits,min}^b$}}
 \newcommand{\nvisitsy}{$N_{visits}^y$}
 \newcommand{\nvisitsall}{$N_{visits}^g,N_{visits}^r,N_{visits}^i,N_{visits}^z,N_{visits}^y$}
-
+\newcommand{\ddfscen}[1]{RDD\_#1}
 
 
 % ======================================================================
@@ -233,7 +235,7 @@ We may then use \ref{eq:zliminvisits} and \ref{fig:nvisits_zlim} to estimate the
 \end{table}
 
 
-\section{Rolling DD scenarios: probing high-redshift domains}
+\section{Rolling Deep Drilling scenarios: probing higher \zcomp~domains}
 \label{sec:scenario}
 \subsection{Season length and number of visits}
 The season length of observation is a parameter involved in the estimation of the budget and the number of well-sampled \sne.  It depends on the position of the field (w.r.t. LSST position) but also on the number of visits per night. The season length may be estimated from a list of night during which a field is visible (i.e. with altitude 20$^o\leq$ alt$\leq$86.5$^o$ and airmass$\leq$1.5) for a duration corresponding to \nvisits.  The results is given on Fig. \ref{fig:seasonlength_nvisits}. The season lengths decrease from 275-200 to 150-100 days for \nvisits~increasing from 1 to 400.  Combining information of sec. \ref{sec:opti} and Fig. \ref{fig:seasonlength_nvisits} lead to the conclusion that low cadences are favored to reach higher \zcomp~values while maximizing the season length. This is due to the fact that the minimal \snrb~to reach \zcomp~is independent on the cadence. The corresponding requested number of visits increases with the cadence. This leads to a decrease of the season length.
@@ -245,7 +247,47 @@ The season length of observation is a parameter involved in the estimation of th
 \end{center}
 \end{figure}
 
-\subsection{Rolling DD scenarios}
+\subsection{Rolling Deep Drilling strategies}
+A Deep Drilling program may be defined by seven parameters: the number of fields to observe, the number of season of observation (per field), the season length (per field), the number of visits (and filter distribution) per observing night, the budget, the number of supernovae, and the redshift of completeness. A GUI (Fig. \ref{fig:budget_gui}) was designed from the results of sec. \ref{sec:opti} to design Deep Drilling scenarios. Once the field parametersconfiguration (fields to observe, number of seasons, season length) is set, one of the three parameters (\zcomp, budget, \nvisits) may be fixed to estimate the two others. 
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.95\textwidth]{budget_GUI.png}
+ \caption{A GUI to define Deep Drilling programs. The field parameters (fields to observe, number of seasons, season length) are defined in the bottom table. The bottom plot displays the number of visits as a function of \zcomp. The budget as a function of \zcomp~is represented on the top plot. One of the three parameters (\zcomp, budget, \nvisits) may be fixed to estimate the two others. The expected total number of supernovae is also estimated. We have chosen \zcomp$\sim$0.8 as an illustraion.}\label{fig:budget_gui}
+\end{center}
+\end{figure}
+Observing 5 fields for ten years up to \zcomp$\sim$ 0.9 would certainly give access to a large sample of well-measured \sne (around 11k) but also to an unrealistic scenario (budget: 87\%). This result confirm that the only way to reach higher \zcomp~while maintaining a reasonable budget is to reduce the number of seasons of observation. This is the purpose of the Rolling Deep Drilling (RDD) strategies presented in Tab. \ref{tab:rolling_scenarios}. We are presenting three scenarios, depending on the number of fields and for \zcomp~0.8,0.84,0.9. The budget ranges from 11\per~ to 15\per~and the number of supernovae between 1800 to 2500.
+
+\begin{table}[!htbp]
+  \caption{Set of scenarios to reach higher \zcomp.}\label{tab:rolling_scenarios}
+  \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c}
+      \hline
+      \hline
+      Scenario & \zcomp & \nsncomp & budget & \nvisits & fields & seasons & season length\\
+                       &                 &                     &               & \bg/\br/\bi/\bz/\by &        & & [month] \\
+      \hline
+      \multirow{5}{*}{\ddfscen{a}} & \multirow{5}{*}{0.8} & \multirow{5}{*}{2270} & \multirow{5}{*}{11.4\per} & & COSMOS & 1,2 & 5.8 \\
+         &       &          &                  &          & CDFS         & 3,4 & 6.0 \\
+         &       &          &                  &      127               & ELAIS        & 7,8 & 6.0 \\
+         &       &          &                  &    2/2/45/58/19                  &XMM-LSS  & 9,10 & 6.0 \\
+         &       &          &                  &                     &ADFS          & 1,2,5,6 & 6.0 \\
+      \hline
+      \multirow{5}{*}{\ddfscen{b}} & \multirow{5}{*}{0.84} & \multirow{5}{*}{2500} & \multirow{5}{*}{15.0\per} & & COSMOS & 1,2 & 5.4\\
+         &       &          &                  &          & CDFS         & 3,4 & 6.0 \\
+         &       &          &                  &      169               & ELAIS        & 7,8 & 6.0 \\
+         &       &          &                  &    2/2/63/85/18                  &XMM-LSS  & 9,10 & 5.8\\
+         &       &          &                  &                     &ADFS          & 1,2,5,6 & 6.0 \\
+      \hline
+      \multirow{3}{*}{\ddfscen{c}} & \multirow{3}{*}{0.9} & \multirow{3}{*}{1860} & \multirow{3}{*}{14.3\per} & & COSMOS & 1,2 & 4.7 \\
+         &       &          &                  &     250     & CDFS         & 3,4 & 6.0 \\
+         &       &          &                  &    2/2/98/130/18                 &ADFS          & 1,2,5,6 & 6.0 \\
+      \hline
+      \end{tabular}
+  \end{center}
+\end{table}
+
+
 
 \subsection{Budget and \by-visits}
 
@@ -289,6 +331,7 @@ Since \sigc~varies with the redshift  (Fig. \ref{fig:sigc_z}, top), the requirem
  \caption{Color error \sigc~as a function of redshift (top) and signal-to-noise ratio per band \snrb~as a function of \sigc~(bottom) for a faint type Ia supernova.}\label{fig:sigc_z}
 \end{center}
 \end{figure}
+
 
 
 \section{LSST Deep Drilling program design constraints}
