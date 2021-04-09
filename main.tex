@@ -39,12 +39,13 @@
 \newcommand{\salt}{SALT2}
 \newcommand{\xnorm}{$x_0$}
 \newcommand{\strech}{$x_1$}
-\newcommand{\snstrech}{\mobx{$x_1$}}
+\newcommand{\snstrech}{\mbox{$x_1$}}
 \newcommand{\col}{$c$}
 \newcommand{\daymax}{$T_0$}
 \newcommand{\sigc}{\mbox{$\sigma_c$}}
 \newcommand{\sigmu}{\mbox{$\sigma_\mu$}}
 \newcommand{\zlim}{\mbox{$z_{lim}$}}
+\newcommand{\zlimfaint}{\mbox{$z_{lim,faint}^{SN}$}}
 \newcommand{\cosmos}{{\sc COSMOS}}
 \newcommand{\elais}{{\sc ELAIS-S1}}
 \newcommand{\xmm}{{\sc XMM-LSS}}
@@ -52,7 +53,7 @@
 \newcommand{\adfa}{{\sc ADF-A}}
 \newcommand{\adfb}{{\sc ADF-B}}
 \newcommand{\euclid}{{\sc EUCLID}}
-\newcommand{\romanspace}{{\sc ROMAN}}
+\newcommand{\romanspace}{{\sc Roman Space Telescope}}
 \newcommand{\wfirst}{{\sc WFIRST}}
 \newcommand{\sne}{{SNe Ia}}
 \newcommand{\degsq}{{deg$^2$}}
@@ -60,7 +61,7 @@
 \newcommand{\nsncomp}{{$N_{SN}(z\leq z_{complete})$}}
 \newcommand{\zcomp}{\mbox{$z_{complete}$}}
 \newcommand{\zcompb}{\mbox{$z_{complete}^{0.95}$}}
-\newcommand{\snfaint}={\mbox{$(\snstretch,\sncolor)=(-2.0,bobo)$}}
+\newcommand{\snfaint}{\mbox{$(\snstrech,\sncolor)=(-2.0,0.2)$}}
 \newcommand{\snx}{\mbox{$x_0$}}
 \newcommand{\sncolor}{\mbox{$c$}}
 \newcommand{\redshift}{\mbox{$z$}}
@@ -72,7 +73,6 @@
 \newcommand{\nvisitsy}{$N_{visits}^y$}
 \newcommand{\nvisitsall}{$N_{visits}^g,N_{visits}^r,N_{visits}^i,N_{visits}^z,N_{visits}^y$}
 \newcommand{\ddfscen}[1]{RDD\_#1}
-
 
 % ======================================================================
 
@@ -110,23 +110,13 @@ This paper compiles a set of studies related to the DD program of LSST. The main
 
 \section{Deep Drilling survey design constraints}
 \label{sec:design}
-\begin{itemize}
-\item number of fields: the location of four DD fields (\cosmos,\elais,\xmm,\cdfs) are already fixed (Tab. \ref{tab:locddf}). Two could be added in the south region (\adfa,\adfb) to ensure a synergy with \euclid~and \wfirst~surveys, at the begining and at the end of the LSST survey, respectively. 
-\item season length: the number of exploding supernovae is proportional to the season duration. Season lengths of at least 6 months are required to maximize the size of the sample of observed type Ia supernovae.
-\item cadence: observations every $\sim$3 days would lead to an adequate sampling of the light curves. 
-\item DD budget: it is expected that 5-6$\%$ of the total number of LSST visits will be alloted to the DD program and shared among science topics interested by DD observations (such as AGN, supernovae, ...).  This limited budget is related to the total number of visits per observing night through the relation:
-  \begin{eqnarray}
-  DD_{budget} &=& N_{visits}^{DD}/N_{visits}^{tot} \\
-  N_{visits}^{DD} &=& \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times SL^{ij}\times 30/Cad^{ij} \\
-  N_{visits,night}^{ij} &=& \sum_{b} N_{visits,night}^{ij}_b \text{ with b=grizy}
-  \label{eq:ddbudget}
-  \end{eqnarray}
-where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $SL$ the season length, $Cad$ the cadence of observations, and $N_{visits, night}$ the total number of visits per observation night. $N_{visits,night}$ has been estimated for a cadence of 3 days, season lengths of 6 months, and $N_{visits}^{tot$}$ = (Tab. \ref{tab:ddbudget}). $N_{visits,night}$ largely depends on the observing strategy:   
-  
- \end{itemize}
-
+A DD mini-survey is optimal for \sne~ science if the pair metric (\nsn,\zcompb) is maximized while meeting design constraints such as the number of fields to be observed, the cadence of observation, the season length, and, last but not least, the budget.
+\par
+The location of four DD fields (\cosmos,\elais,\xmm,\cdfs) is already fixed (Tab. \ref{tab:locddf}). A fifth field could be added in the ADFS area to ensure contemporaneous observations with \euclid~~(\citealt{laureijs2011euclid,Amendola_2013}) and \romanspace~(\citealt{spergel2015widefield}), at the begining and at mid-term of the LSST survey, respectively.
+\par
+The number of exploding supernovae is proportional to the season duration (\citealt{perrett}). Maximizing season length is particularly important in the DDFs because of time dilation. Season lengths of at least six months are required to maximize the size of the sample of well-measured \sne.
 \begin{table}[!htbp]
-  \caption{Location of the DD fields considered in this study.}\label{tab:locddf}
+  \caption{Location of the DD fields considered in this study. ADFS1 and ADFS2 are example of south fields simulated in LSST observing strategy.}\label{tab:locddf}
   \begin{center}
     \begin{tabular}{c|c|c}
       \hline
@@ -146,18 +136,42 @@ where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season
       \end{tabular}
   \end{center}
 \end{table}
+\par
+A regular cadence\footnote{The cadence is defined as the median of inter-night gap} of observation ($\sim$ 3 days max) is required to collect well-sampled light curves (LC). The number of large gaps ($>$10 days) between visits degrades the 
+measurements of luminosity distances, and potentially result in rejecting large sets of light curves of poor quality.
+\par
+It is expected that 5-12$\%$ of the total number of LSST visits will be alloted to the DD program and shared among science topics interested by DD observations (such as AGN, supernovae, ...).  This limited budget is related to the total number of visits per observing night through the relation:
+  \begin{eqnarray}
+  DD_{budget} &=& N_{visits}^{DD}/N_{visits}^{tot} \\
+  N_{visits}^{DD} &=& \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times seaslen^{ij}\times 30/cad^{ij} \\
+  N_{visits,night}^{ij} &=& \sum_{b} N_{visits,night}^{ijb}   , b=g,r,i,z,y
+  \label{eq:ddbudget}
+  \end{eqnarray}
+  where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $seaslen$ the season length, $cad$ the cadence of observation, and $N_{visits, night}^{ij}$ the total number of visits per observing night, per field, and per season..
+  \par
+  We have estimated $N_{visits,night}$ from the following input: cadence of 1 day, season lengths of 6 months, 5 fields observed for 10 or 2 seasons, and a budget of 6, 10 and 15\%.  The conclusion (Tab. \ref{tab:ddbudget}) is that the maximum number of visits per night and per fields is quite dependent on the budget (the number of visits is multiplied by 2.5 when increasing the budget from 6\% to 15\%) but also on the configuration of the survey that may be parametrized by $N_{fields}\times N_{seasons}^{field}$: the number of visits increases by a factor 5 if $N_{fields}\times N_{seasons}^{field}$ decreases from 50 to 10. 
+  
+ \end{itemize}
+
+
 
 \begin{table}[!htbp]
-  \caption{Total number of visits (per observing night) as a function of the DD budget and the cadence of observation for a configuration of 5 fields. The first/second number corresponds to 10/2 seasons of observation per field. }\label{tab:ddbudget}
+  \caption{Total number of visits (per observing night) as a function of the DD budget and the cadence of observation for a configuration of 5 fields, for 10 and 2 seasons of observation, and for a cadence of 1 day.  }\label{tab:ddbudget}
   \begin{center}
-    \begin{tabular}{c|c|c|c}
+    %\begin{tabular}{c|c|c|c}
+    \begin{tabular}{c|c|c}
       \hline
       \hline
-      \diagbox[innerwidth=3.cm,innerleftsep=-1.cm,height=3\line]{budget}{cadence} & 1 & 2 & 3\\
+      %\diagbox[innerwidth=3.cm,innerleftsep=-1.cm,height=3\line]{budget}{cadence} & 1 & 2 & 3\\
+      budget & $N_{visits, night}$ & $N_{visits, night}$\\
+                    & 5 fields, 10 seasons & 5 fields, 2 seasons \\
       \hline
-      6\% & 13/66 & 26/132 & 40/199 \\
-      10\% & 22/111 & 44/221 & 66/332 \\
-      15\% & 33/166 & 66/332 & 99/498 \\
+      6\% & 13 & 66 \\
+      10\% & 22 & 111 \\
+      15\% & 33 & 166 \\
+      %6\% & 13/66 & 26/132 & 40/199 \\
+      %10\% & 22/111 & 44/221 & 66/332 \\
+      %15\% & 33/166 & 66/332 & 99/498 \\
       \hline
     \end{tabular}
   \end{center}
@@ -167,7 +181,7 @@ where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season
 \label{sec:metrics}
 The metrics used to assess observing strategies are estimated from full simulation of light curves. We have used the SALT2 model (\citealt{Guy_2007,Guy_2010}) where a \sne~is described by five parameters: \snx, the normalization of the SED sequence; \snstretch, the stretch; \sncolor, the color; \daymax, the day of maximum luninosity; and $z$, the redshift. a flat-$\Lambda$CDM model was used to estimate cosmological distances, with $H_0$ = 70 km s$^{-1}$, $\Omega_m$ = 0.3 and $\Omega_\Lambda$ = 0.7.
 \par
-We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) LC points before (after) maximum luminosity; at least one point with a phase lower than -10 and higher than 20; \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria. The redshift of the complete sample, \zcomp, is the redshift limit of a faint supernova defined by \snfaint.
+We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) epochs before (after) maximum luminosity; at least one point with a phase lower(higher) than -10(20); and \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria.
 \par
 The estimation of \zlim~is mainly driven by the selection on the error of the color, \sigc$\leq$0.04. \sigc~reflects the quality of the collected light curves, result of the cadence of observation (sampling) and of the flux uncertainty measurements. Hence the \sigc~estimation is driven by the Signal-to-Noise Ratio (SNR) per band defined by:
 \begin{equation}
@@ -179,11 +193,17 @@ where $f^b$, and $\sigma^b$ are the fluxes and fluxes uncertainties. The summati
   \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\snrb \geq \snrbmin)
  \label{eq:zlimsnr}
 \end{equation}
-
+The redshift of a complete sample, \zcompb, is estimated from the redshift limit distribution, \zlimfaint, of a simulated set of faint supernovae with \daymax~values spanning over the season duration of a group of observations. \zcompb~is defined as the 95th percentile of the \zlimfaint~cumulative distribution.
 
 
 \section{Analysis of current simulations}
 \label{sec:analysis}
+The LSST project has periodically released few sets of simulations during the few past years. These simulations contain a large number of WFD strategies depending on area observed, filter allocation, weather impact, scanning strategy, ... (for more details see ). The diversity of DD scenarios is rather limited and we have choosen to analyze a set of observing strategies with representative DD surveys on the basis of the following criteria: number of visits (and filter allocation) per observing night, cadence of observation, dithering, and budget. The list of observing strategies is given in Tab \ref{tab:
+
+\input{texfiles/dd_summary_0}
+\input{texfiles/dd_summary_1}
+\input{texfiles/dd_summary_2}
+\input{texfiles/dd_summary_3}
 
 \section{Towards an optimization of the DD survey}
 \label{sec:opti}
@@ -334,41 +354,13 @@ Since \sigc~varies with the redshift  (Fig. \ref{fig:sigc_z}, top), the requirem
 
 
 
-\section{LSST Deep Drilling program design constraints}
-\label{sec:designb}
 
-Up to approximately 10\% of LSST observing time will be dedicated to other programs, including intensive observation of a set of Deep Drilling Fields. 
-
-
-
-\section{Analysis of recent simulations}
-
-\input{texfiles/dd_summary_0}
-\input{texfiles/dd_summary_1}
-\input{texfiles/dd_summary_2}
-\input{texfiles/dd_summary_3}
 
 
 % ----------------------------------------------------------------------
 
 %\section{Lessons from recent simulations}
 %\label{sec:simu}
-
-
-% ----------------------------------------------------------------------
-
-\section{Optimization of the LSST Deep Drilling  program}
-\label{sec:optimization}
-\subsection{Optimization method}
-
-
-\subsection{Results}
-
-% ----------------------------------------------------------------------
-
-
-\section{Proposal for new DD-minisurvey scenario}
-\label{sec:proposal}
 
 % ----------------------------------------------------------------------
 
