@@ -206,7 +206,8 @@ The LSST project has periodically released few sets of simulations during the fe
 %\input{texfiles/dd_summary_1}
 %\input{texfiles/dd_summary_2}
 %\input{texfiles/dd_summary_3}
-Four sets of observing strategies may be extracted from Tab. \ref{tab:os} according to the filter allocation per night, which is the parameter that has the most significant impact on the redshift limit value : \osfamily{baseline-like}~ (10 observing strategies), with two sets of filter distributions ($g/r/i/z/y$ and $u/g/r/i/y$, with $(N_u,N_g,N_r,N_i,N_z,N_y)=(8-16,10,20,20,26,20)$), \osfamily{agnddf} ($g/r/i/z/y$ with $(N_g,N_r,N_i,N_z,N_y)=(1,1,3,5,4)$), \osfamily{daily} ($g/r/i/z/y$ with $(N_g,N_r,N_i,N_z,N_y)=(1,1,2,2,2)$), \osfamily{descddf} (($g/r/i$ interleaved with $z/y$ with $(N_g,N_r,N_i,N_z,N_y)=(2,4,8,25,4)$). Estimation of the pair metric (\nsn,\zcompb) (defined in \ref{sec:metrics}) for these families shows (Fig. \ref{fig:nsn_zlim_zoom}) that higher redshift limits are reached for \osfamily{baseline-like} family. Most (9/10) of these observing strategies reach \zlimcopb$\sim$0.65. ddf\_heavy, the one with the largest budget (13.4\%),  reaches \zlimcompb$\sim$0.72 and also collects the larger number of well-sample \sne~($\sim$ 6000).
+Four sets of observing strategies may be extracted from Tab. \ref{tab:os} according to the filter allocation per night, which is the parameter that has the most significant impact on the redshift limit value : \osfamily{baseline}~ (11 observing strategies), with two sets of filter distributions, \osfamily{agn}, \osfamily{daily}, \osfamily{desc}. Estimation of the pair metric (\nsn,\zcompb) (defined in \ref{sec:metrics}) for these families shows (Fig. \ref{fig:nsn_zlim_zoom}) that higher redshift limits are reached for \osfamily{baseline-like} family. Most (10/11) of these observing strategies reach \zlimcopb$\sim$0.65. ddf\_heavy, the strategy with the largest budget, reaches \zlimcompb$\sim$0.72 and also collects the larger number of well-sample \sne. \osfamily{daily} and \osfamily{desc} are characterized by a lower depth but by a significant number of well-measured \sne.\\
+The redshift of completeness value is mainly driven by the number of visits per observing night and by the cadence. We would expect \zcompb$\sim$(0.75,0.52,0.48,0.65) for (\osfamily{baseline},\osfamily{agn},\osfamily{daily},\osfamily{desc}), respectivelly, for a regular cadence of 2 days (1 day for daily) and median observing conditions. The corresponding expected number of well-measured supernovae would be of (9000,3400,2700,6200) without dithering. A comparison of these numbers with Fig. \ref{fig:nsn_zlim_zoom} reveals that the values of the pair metric(\nsn, \zlimcompb) are the complex outcome of the combination of the following (ranked by order) parameters: number of visits per observing night$\times$cadence, season length, dithering, observing conditions. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -214,6 +215,15 @@ Four sets of observing strategies may be extracted from Tab. \ref{tab:os} accord
  \caption{\nsn~vs \zcompb~for the observing strategies considered in this paper.}\label{fig:nsn_zlim_zoom}
 \end{center}
 \end{figure}
+
+\begin{figure}[htbp]
+  \begin{center}
+  \includegraphics[width=0.9\textwidth]{dither_ddf.png}
+ \caption{Ratio of the number of supernovae $N_{SN}/N_{SN}^{nodither}$ (top) and \zcompb~difference (bottom) as a function of translational dither offset. The simulations labelled as 'Fakes' (dotted lines) correspond to a regular cadence with median observing conditions (5$\sigma$ depth single exposure: 24.13/23.84/23.45/22.74/22.10 for $g/r/i/y/z$ bands, respectivelly.}\label{fig:dither}
+\end{center}
+\end{figure}
+
+
 
 \section{Towards an optimization of the DD survey}
 \label{sec:opti}
