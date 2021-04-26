@@ -246,9 +246,7 @@ The translationnal dithering is expected to affect both the number of well-sampl
 \label{sec:opti}
 
 The analysis of the most recent simulations have shown (see Sec. \ref{sec:analysis}) that it was difficult, with the proposed cadences of observation, filter allocation and season lengths, to collect complete samples of \sne~with redshift higher than \zcompb\seq 0.55-0.6 for a DD budget of \seq 5\per.  %A high budget (\seq 13.5\per) is requested to reach \zcompb\seq 0.65.
-The redshift limits are mainly driven by \sumnvisitsb$\times$ cadence. With optimal survey parameters (i.e. a regular cadence of observation of one day, no dithering, minimal fluctuation of observing conditions) the depth of the four families considered in Sec. \ref{sec:analysis} would be \zcompb $\sim$ (0.77,0.59,0.54,0.72) for (\osfamily{baseline},\osfamily{agn},\osfamily{daily},\osfamily{desc}), respectivelly. These values are well below the ambitious goal of \zcompb\seq1. According to Eq. \ref{eq:zlimsnr} the only way to reach higher redshift limits is to increase the minimal SNR requested in each band that is, in turn, to choose 
-
-\snrb (that is \sumnvisitsb$\times$ cadence) while choosing the optimal filter allocation.  
+The redshift limits are mainly driven by \sumnvisitsb$\times$ cadence. With optimal survey parameters (i.e. a regular cadence of observation of one day, no dithering, minimal fluctuation of observing conditions) the depth of the four families considered in Sec. \ref{sec:analysis} would be \zcompb $\sim$ (0.77,0.59,0.54,0.72) for (\osfamily{baseline},\osfamily{agn},\osfamily{daily},\osfamily{desc}), respectivelly. These values are well below the ambitious goal of \zcompb\seq1. According to Eq. \ref{eq:zlimsnr} the only way to reach higher redshift limits is to increase the minimal SNR requested in each band that is, in turn, the number of visits. We present in this section a method of defining the relationship between the redshift limit and the number of visits per band and per observing night (for a defined cadence). 
 \par
 As described in Eq. \ref{eq:ddbudget} the DD budget depends primarily on 5 parameters: the number of fields to observe, the season length (per field and per season), the number of seasons of observation, the cadence of observation (per field and per season), and the number of visits \nvisitsb~per filter and per observing night. \nvisitsb~affect \snrb~through the flux measurement uncertainties  $\sigma_i^b$. In the background-dominated regime one has $\sigma_i^b \simeq \sigma_5^b$ where $\sigma_5^b$ is equal by definition to
 \begin{equation}
@@ -274,9 +272,11 @@ The relations \eqref{eq:zlimsnr} and \eqref{eq:zlimnvisits} are not univocal. A 
 \begin{figure}[htbp]
 \begin{center}
   \includegraphics[width=0.95\textwidth]{nvisits_zlim.png}
- \caption{Number of visits as a function of the completeness redshift. 250 visits {\it with} the following filter allocation (\nvisitsall)=(2,2,98,130,18) are requested per observing night to reach \zcomp\seq0.9.}\label{fig:nvisits_zlim}
+ \caption{Number of visits as a function of the completeness redshift. 250 visits {\it with} the following filter allocation (\nvisitsall)=(2,2,98,130,18) are requested per observing night to reach \zcomp\seq0.9 for a cadence of one day.}\label{fig:nvisits_zlim}
 \end{center}
 \end{figure}
+
+\begin{comment}
 We may then use \ref{eq:zliminvisits} and \ref{fig:nvisits_zlim} to estimate the redshift of completeness corresponding to the number of visits of \ref{tab:ddbudget}. The conclusions of the result (Tab. \ref{tab:zlim}) are (a) it is very difficult to reach completeness redshifts higher than 0.6-0.7 if all fields are observed for ten years ; (b) the only way to explore higher  redshift domains is to reduce the number of seasons of observation.
 
 \begin{table}[!htbp]
@@ -294,12 +294,13 @@ We may then use \ref{eq:zliminvisits} and \ref{fig:nvisits_zlim} to estimate the
     \end{tabular}
   \end{center}
 \end{table}
+\end{comment}
 
-
-\section{Rolling Deep Drilling scenarios: probing higher \zcomp~domains}
+\section{Rolling Deep Drilling surveys to reach \zcomp~domains}
 \label{sec:scenario}
-\subsection{Season length and number of visits}
-The season length of observation is a parameter involved in the estimation of the budget and the number of well-sampled \sne.  It depends on the position of the field (w.r.t. LSST position) but also on the number of visits per night. The season length may be estimated from a list of night during which a field is visible (i.e. with altitude 20$^o\leq$ alt$\leq$86.5$^o$ and airmass$\leq$1.5) for a duration corresponding to \nvisits.  The results is given on Fig. \ref{fig:seasonlength_nvisits}. The season lengths decrease from 275-200 to 150-100 days for \nvisits~increasing from 1 to 400.  Combining information of sec. \ref{sec:opti} and Fig. \ref{fig:seasonlength_nvisits} lead to the conclusion that low cadences are favored to reach higher \zcomp~values while maximizing the season length. This is due to the fact that the minimal \snrb~to reach \zcomp~is independent on the cadence. The corresponding requested number of visits increases with the cadence. This leads to a decrease of the season length.
+\paragraph{Season length and field location}
+The season length of observation is a parameter involved in the estimation of the budget and the number of well-sampled \sne.  It depends on the position of the field (w.r.t. LSST position) but also on the number of visits per night. The season length may be estimated from a list of night during which a field is visible (i.e. with altitude 20$^o\leq$ alt$\leq$86.5$^o$ and airmass$\leq$1.5) for a duration corresponding to \nvisits.  The results is given on Fig. \ref{fig:seasonlength_nvisits}. The season lengths decrease from 275-200 to 150-100 days for \nvisits~increasing from 1 to 400.  Combining information of sec. \ref{sec:opti} and Fig. \ref{fig:seasonlength_nvisits} lead to the conclusion that low cadences are favored to reach higher \zcomp~values while maximizing the season length.
+%This is due to the fact that the minimal \snrb~to reach \zcomp~is independent on the cadence. The corresponding requested number of visits increases with the cadence. This leads to a decrease of the season length.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -308,8 +309,10 @@ The season length of observation is a parameter involved in the estimation of th
 \end{center}
 \end{figure}
 
-\subsection{Rolling Deep Drilling strategies}
-A Deep Drilling program may be defined by seven parameters: the number of fields to observe, the number of season of observation (per field), the season length (per field), the number of visits (and filter distribution) per observing night, the budget, the number of supernovae, and the redshift of completeness. A GUI (Fig. \ref{fig:budget_gui}) was designed from the results of sec. \ref{sec:opti} to design Deep Drilling scenarios. Once the field parametersconfiguration (fields to observe, number of seasons, season length) is set, one of the three parameters (\zcomp, budget, \nvisits) may be fixed to estimate the two others. 
+\subsection{Rolling Deep Drilling strategy}
+A Deep Drilling program may be defined by the following parameters: number of fields to observe, number of season of observation (per field), season length (per field and per season),  number of visits per filter per observing night, DD budget, number of supernovae, and redshift of completeness.  Once the field parameters configuration (fields to observe, number of seasons, season length) is set, one of the three parameters (\zcomp, budget, \nvisits) may be fixed to estimate the two others using the results of Fig.~\ref{fig:nvisits_zlim}. 
+\begin{comment}
+A GUI (Fig. \ref{fig:budget_gui}) was designed from the results of sec. \ref{sec:opti} to design Deep Drilling scenarios. Once the field parametersconfiguration (fields to observe, number of seasons, season length) is set, one of the three parameters (\zcomp, budget, \nvisits) may be fixed to estimate the two others. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -317,8 +320,18 @@ A Deep Drilling program may be defined by seven parameters: the number of fields
  \caption{A GUI to define Deep Drilling programs. The field parameters (fields to observe, number of seasons, season length) are defined in the bottom table. The bottom plot displays the number of visits as a function of \zcomp. The budget as a function of \zcomp~is represented on the top plot. One of the three parameters (\zcomp, budget, \nvisits) may be fixed to estimate the two others. The expected total number of supernovae is also estimated. We have chosen \zcomp$\sim$0.8 as an illustraion.}\label{fig:budget_gui}
 \end{center}
 \end{figure}
-Observing 5 fields for ten years up to \zcomp$\sim$ 0.9 would certainly give access to a large sample of well-measured \sne (around 11k) but also to an unrealistic scenario (budget: 87\%). This result confirm that the only way to reach higher \zcomp~while maintaining a reasonable budget is to reduce the number of seasons of observation. This is the purpose of the Rolling Deep Drilling (RDD) strategies presented in Tab. \ref{tab:rolling_scenarios}. We are presenting three scenarios, depending on the number of fields and for \zcomp~0.8,0.84,0.9. The budget ranges from 11\per~ to 15\per~and the number of supernovae between 1800 to 2500.
+\end{comment}
 
+Observing 5 fields for ten years up to \zcomp $\sim$ 0.9 would certainly give access to a large sample of well-measured \sne~(around 11k) but also to an unrealistic scenario (DD budget: 87\%). The only way to reach higher \zcomp~while maintaining a reasonable budget is to reduce the number of seasons of observation. This is the purpose of the Rolling Deep Drilling (RDD) strategy characterized by a limited number of seasons of observation per field (typically 2) and a large number of visits per observing night.
+
+\par
+Building a consistent RDD strategy is not only a matter of adjusting LSST survey settings to stay within a reasonable budgetary envelope. Photometry will be used to collect the sample of well-measured \sne and to estimate their host redshifts. But spectroscopic measurements will be necessary, either to confirm the type of the supernovae collected (and used for photometric classification), and to estimate host redshifts with high accuracy. Available spectroscopic resources have to be taken into account to design an optimal RDD survey for supernovae.
+
+\par
+
+
+
+\begin{comment}
 \begin{table}[!htbp]
   \caption{Set of scenarios to reach higher \zcomp.}\label{tab:rolling_scenarios}
   \begin{center}
@@ -347,10 +360,7 @@ Observing 5 fields for ten years up to \zcomp$\sim$ 0.9 would certainly give acc
       \end{tabular}
   \end{center}
 \end{table}
-
-
-
-\subsection{Budget and \by-visits}
+\end{comment}
 
 % ----------------------------------------------------------------------
 
