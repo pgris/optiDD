@@ -17,6 +17,8 @@
 \usepackage{diagbox}
 \usepackage{multirow}
 \usepackage{adjustbox}
+\usepackage{comment}
+\usepackage{mathtools}
 
 %\usepackage{pdflscape}
 \graphicspath{{./}{./figures/}}
@@ -60,6 +62,7 @@
 \newcommand{\degsq}{{deg$^2$}}
 \newcommand{\nsn}{{$N_{SN}^{z\leq z_{lim}}$}}
 \newcommand{\nsncomp}{{$N_{SN}^{z\leq z_{complete}}$}}
+\newcommand{\sumnsncomp}{{$\sum\limits_{Npixels} N_{SN}^{z\leq z_{complete}}$}}
 \newcommand{\zcomp}{\mbox{$z_{complete}$}}
 \newcommand{\zcompb}{\mbox{$z_{complete}^{0.95}$}}
 \newcommand{\snfaint}{\mbox{$(\snstrech,\sncolor)=(-2.0,0.2)$}}
@@ -70,6 +73,7 @@
 \newcommand{\seq}{$\sim$}
 \newcommand{\nvisits}{$N_{visits}$}
 \newcommand{\nvisitsb}{\mbox{$N_{visits}^b$}}
+\newcommand{\sumnvisitsb}{\mbox{$\sum\limits_{b}N_{visits}^b \]$}}
 \newcommand{\nvisitsbmin}{\mbox{$N_{visits,min}^b$}}
 \newcommand{\nvisitsy}{$N_{visits}^y$}
 \newcommand{\nvisitsall}{$N_{visits}^g,N_{visits}^r,N_{visits}^i,N_{visits}^z,N_{visits}^y$}
@@ -109,15 +113,15 @@ The stated ambition of the LSST Supernovae program is to maximize the sample siz
 \par
 In a recent paper (ref), the Dark Energy Science Collaboration (DESC) has presented an analysis of the WFD survey of observing strategies simulated by the project\footnote{These strategies are available here: }. We have concluded that an unprecedented number of high quality \sne~will be observed in the WFD survey (between 120k and 170k) up to redshifts $z~$0.3. The DD SN programm is necessary for obtaining a sample of high-redshift (up to $z\simeq$1) and well-measured supernovae which improves cosmological constraints from SNIa. Achieving Stage IV dark energy goals will critically rely on the deep drilling fields (DDFs) of LSST.
 \par
-This paper compiles a set of studies related to the DD program of LSST. The main goal is to assess whether observing \sne~up to $z\simeq$1 is achievable while respecting design constraints (number of fields, budget,...). This article is subdivided into 6 sections. The design constraints of the DD program and the metrics used to assess observing strategies are described in the first two parts. A detailed analysis of the recent DD surveys proposed by the project is presented in the third section. A method to optimize the DD program is proposed in a fourth part. The last section of the document is dedicated to the presentation of DD realistic scenarios that would achieve the goal of observing high quality \sne~up to   $z\simeq$1.
+This paper compiles a set of studies related to the DD program of LSST. The main goal is to assess whether observing \sne~up to $z\simeq$1 is achievable while respecting design constraints (number of fields, budget,...). This article is subdivided into 6 sections. The design constraints of the DD program and the metrics used to assess observing strategies are described in the first two parts. A detailed analysis of recent DD simulations proposed by the project is presented in the third section. A method to optimize the DD program is proposed in a fourth part. The last section of the document is dedicated to the presentation of a DD realistic scenario that would achieve the goal of observing high quality \sne~up to  $z\simeq$1.
 
 \section{Deep Drilling survey design constraints}
 \label{sec:design}
-A DD mini-survey is optimal for \sne~ science if the pair metric (\nsncomp,\zcompb) is maximized while meeting design constraints such as the number of fields to be observed, the cadence of observation, the season length, and, last but not least, the budget.
+Survey parameters having an impact on the design of the DD mini-surveys are the number of fields to be observed, the cadence of observation, the number of season of observation, the season length, and, last but not least, the budget.
 \par
-The location of four DD fields (\cosmos,\elais,\xmm,\cdfs) is already fixed (Tab. \ref{tab:locddf}). A fifth field could be added in the ADFS area to ensure contemporaneous observations with \euclid~~(\citealt{laureijs2011euclid,Amendola_2013}) and \romanspace~(\citealt{spergel2015widefield}), at the begining and at mid-term of the LSST survey, respectively.
+Four distant extragalactic survey fields that LSST guarantees to observe as Deep Drilling Fields have been selected in 2012\footnote{http://ls.st/bki}: \cosmos,\elais,\xmm,\cdfs (Tab. \ref{tab:locddf}). More recently, the DESC collaboration has supported the LSST DDF coverage of the southern deep fields area to ensure contemporaneous observations with \euclid~~(\citealt{laureijs2011euclid,Amendola_2013}) and \romanspace~(\citealt{spergel2015widefield}), at the begining and at mid-term of the LSST survey, respectively.
 \par
-The number of exploding supernovae is proportional to the season duration (\citealt{perrett}). Maximizing season length is particularly important in the DDFs because of time dilation. Season lengths of at least six months are required to maximize the size of the sample of well-measured \sne.
+The number of exploding supernovae is proportional to the number of season of observatio and to the season duration (\citealt{perrett}). Maximizing season length is particularly important in the DDFs because of time dilation. Season lengths of at least six months are required to maximize the size of the sample of well-measured \sne.
 \begin{table}[!htbp]
   \caption{Location of the DD fields considered in this study. ADFS1 and ADFS2 are example of south fields simulated in LSST observing strategy.}\label{tab:locddf}
   \begin{center}
@@ -140,23 +144,28 @@ The number of exploding supernovae is proportional to the season duration (\cite
   \end{center}
 \end{table}
 \par
-A regular cadence\footnote{The cadence is defined as the median of inter-night gap} of observation ($\sim$ 3 days max) is required to collect well-sampled light curves (LC). The number of large gaps ($>$10 days) between visits degrades the 
+A regular cadence\footnote{The cadence is defined as the median of inter-night gaps.} of observation ($\sim$ 3 days max) is required to collect well-sampled light curves (LC). The number of large gaps ($>$10 days) between visits degrades the 
 measurements of luminosity distances, and potentially result in rejecting large sets of light curves of poor quality.
 \par
 It is expected that 5-15$\%$ of the total number of LSST visits will be alloted to the DD program and shared among science topics interested by DD observations (such as AGN, supernovae, ...).  This limited budget is related to the total number of visits per observing night through the relation:
-  \begin{eqnarray}
-  DD_{budget} &=& N_{visits}^{DD}/N_{visits}^{tot} \\
-  N_{visits}^{DD} &=& \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times seaslen^{ij}\times 30/cad^{ij} \\
-  N_{visits,night}^{ij} &=& \sum_{b} N_{visits,night}^{ijb}   , b=g,r,i,z,y
-  \label{eq:ddbudget}
-  \end{eqnarray}
-  where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $seaslen$ the season length, $cad$ the cadence of observation, and $N_{visits, night}^{ij}$ the total number of visits per observing night, per field, and per season..
-  \par
+\begin{equation}\label{eq:ddbudget}
+\begin{aligned}
+DD_{budget} &= N_{visits}^{DD}/N_{visits}^{tot} \\
+  N_{visits}^{DD} &= \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times seaslen^{ij}\times 30/cad^{ij} \\
+  N_{visits,night}^{ij} &=  \sum_{b} N_{visits,night}^{ijb}   , b=g,r,i,z,y
+ \end{aligned}
+ \end{equation}
+
+  %\begin{eqnarray}
+  %DD_{budget} &=& N_{visits}^{DD}/N_{visits}^{tot} \\
+  %N_{visits}^{DD} &=& \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times seaslen^{ij}\times 30/cad^{ij} \\
+  %N_{visits,night}^{ij} &=& \sum_{b} N_{visits,night}^{ijb}   , b=g,r,i,z,y
+  %\label{eq:ddbudget}
+  %\end{eqnarray}
+where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $seaslen$ the season length, $cad$ the cadence of observation, and $N_{visits, night}^{ij}$ the total number of visits per observing night, per field, and per season. The maximum number of visits per night and per field is fairly strongly dependent on the budget (the number of visits is multiplied by 2.5 when increasing the budget from 6\% to 15\%) but also on the configuration of the survey that may be parametrized by $N_{fields}\times N_{seasons}^{field}$: the number of visits increases by a factor 5 if $N_{fields}\times N_{seasons}^{field}$ decreases from 50 to 10.
+
+\begin{comment}
   We have estimated $N_{visits,night}$ from the following input: cadence of 1 day, season lengths of 6 months, 5 fields observed for 10 or 2 seasons, and a budget of 6, 10 and 15\%.  The conclusion (Tab. \ref{tab:ddbudget}) is that the maximum number of visits per night and per fields is quite dependent on the budget (the number of visits is multiplied by 2.5 when increasing the budget from 6\% to 15\%) but also on the configuration of the survey that may be parametrized by $N_{fields}\times N_{seasons}^{field}$: the number of visits increases by a factor 5 if $N_{fields}\times N_{seasons}^{field}$ decreases from 50 to 10. 
-  
- \end{itemize}
-
-
 
 \begin{table}[!htbp]
   \caption{Total number of visits (per observing night) as a function of the DD budget and the cadence of observation for a configuration of 5 fields, for 10 and 2 seasons of observation, and for a cadence of 1 day.  }\label{tab:ddbudget}
@@ -179,23 +188,22 @@ It is expected that 5-15$\%$ of the total number of LSST visits will be alloted 
     \end{tabular}
   \end{center}
 \end{table}
+\end{comment}
 
 \section{Metrics to assess observing strategies}
 \label{sec:metrics}
 The metrics used to assess observing strategies are estimated from full simulation of light curves. We have used the SALT2 model (\citealt{Guy_2007,Guy_2010}) where a \sne~is described by five parameters: \snx, the normalization of the SED sequence; \snstretch, the stretch; \sncolor, the color; \daymax, the day of maximum luninosity; and $z$, the redshift. a flat-$\Lambda$CDM model was used to estimate cosmological distances, with $H_0$ = 70 km s$^{-1}$, $\Omega_m$ = 0.3 and $\Omega_\Lambda$ = 0.7.
 \par
-In SALT2, model uncertainties of $g$ and $r$-band (rest-frame UV) light-curves fluxes are large.
-TO BE CONTINUED.
-
+In SALT2, model uncertainties of $g$ and $r$-band (rest-frame UV) light-curves fluxes are large(\citealt{Guy_2007}). $g$ and $r$ observations with relative error model larger than 10$\%$ have not been considered in this study. This requirement implies that the list of filters useful to measure photometric light-curves (observer-frame) is redshift-dependent: $gri$ bands up to $z\lesssim$0.3-0.4, $rizy$ bands for $0.4\lesssim z \lesssim 0.6-0.7$, and $ izy$ bands for $z\gtrsim 0.7$.
 \par
-We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) epochs before (after) maximum luminosity; at least one point with a phase lower(higher) than -10(20); and \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria.
+We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following tight selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) epochs before (after) maximum luminosity; at least one point with a phase lower(higher) than -10(20); and \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria.
 \par
-The estimation of \zlim~is mainly driven by the selection on the error of the color, \sigc$\leq$0.04. \sigc~reflects the quality of the collected light curves, result of the cadence of observation (sampling) and of the flux uncertainty measurements. Hence the \sigc~estimation is driven by the Signal-to-Noise Ratio (SNR) per band defined by:
+The estimation of \zlim~is mainly driven by the selection on the error of the color, \sigc$\leq$0.04. \sigc~reflects the quality of the collected light curves, result of the cadence of observation (sampling) and of the flux uncertainty measurements (observing conditions). \sigc~estimation is strongly correlated to the Signal-to-Noise Ratio (SNR) per band, \snrb,  defined by:
 \begin{equation}
   SNR^b &=& \sqrt{\sum_{i=1}^{n^b}{\left({{f_i^b}\over{\sigma_i^b}}\right)^2}}
   \label{eq:snrb}
 \end{equation}
-where $f^b$, and $\sigma^b$ are the fluxes and fluxes uncertainties. The summation runs over the number of light curve points. We may summarize the link between \zlim~and \snrb~by:
+where $f^b$, and $\sigma^b$ are the fluxes and fluxes uncertainties. The summation runs over the number of light curve points. Requesting \sigc$\leq 0.04$ is equivalent to requiring a minimal SNR per band and the link between \zlim~and \snrb~may be written:
 \begin{equation}
   \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\snrb \geq \snrbmin)
  \label{eq:zlimsnr}
@@ -212,7 +220,7 @@ The LSST project has periodically released few sets of simulations during the fe
 %\input{texfiles/dd_summary_2}
 %\input{texfiles/dd_summary_3}
 Four sets of observing strategies may be extracted from Tab. \ref{tab:os} according to the filter allocation per night, which is the parameter that has the most significant impact on the redshift limit value : \osfamily{baseline}~ (11 observing strategies), with two sets of filter distributions, \osfamily{agn}, \osfamily{daily}, \osfamily{desc}. Estimation of the pair metric (\nsncomp,\zcompb) (defined in \ref{sec:metrics}) for these families shows (Fig. \ref{fig:nsn_zlim_zoom}) that higher redshift limits are reached for \osfamily{baseline-like} family. Most (10/11) of these observing strategies reach \zcompb$\sim$0.65. ddf\_heavy, the strategy with the largest budget, reaches \zcompb$\sim$0.72 and also collects the larger number of well-sample \sne. \osfamily{daily} and \osfamily{desc} are characterized by a lower depth but by a significant number of well-measured \sne.\par
-The redshift of completeness value is mainly driven by the number of visits per observing night and by the cadence. We would expect \zcompb$\sim$(0.75,0.52,0.48,0.65) for (\osfamily{baseline},\osfamily{agn},\osfamily{daily},\osfamily{desc}), respectivelly, for a regular cadence of 2 days and median observing conditions. The corresponding expected number of well-measured supernovae would be of (9000,3400,2700,6200) without dithering. A comparison of these numbers with Fig. \ref{fig:nsn_zlim_zoom} reveals that the values of the pair metric(\nsncomp, \zcompb) are the complex outcome of the combination of the following (ranked by order) parameters: number of visits per observing night$\times$cadence, season length, dithering, observing conditions. Gaps of more than $\sim$ 5-7 days in a 2 days median cadence have a harmful
+The redshift of completeness value is mainly driven by the number of visits per observing night and by the cadence. We would expect \zcompb$\sim$(0.75,0.52,0.48,0.65) for (\osfamily{baseline},\osfamily{agn},\osfamily{daily},\osfamily{desc}), respectivelly, for a regular cadence of 2 days and median observing conditions. The corresponding expected number of well-measured supernovae would be of (9000,3400,2700,6200) without dithering. A comparison of these numbers with Fig. \ref{fig:nsn_zlim_zoom} reveals that the values of the pair metric (\nsncomp, \zcompb) are the complex outcome of the combination of the following (ranked by order) parameters: number of visits per observing night$\times$cadence, season length, dithering, observing conditions. Gaps of more than $\sim$ 5-7 days in a 2 days median cadence have a harmful
 impact on the size and depth of the SN sample. The main source of gaps for the DDF survey is due to telescope downtime (clouds, telescope maintenance) which leads to about 16-20$\%$ of nights without observation per season.  
 
 \begin{figure}[htbp]
@@ -223,7 +231,7 @@ impact on the size and depth of the SN sample. The main source of gaps for the D
 \end{figure}
 
 \par
-The translationnal dithering is expected to affect both the number of well-sampled supernovae and the redshift of completeness for each of the pixel of a field. With no dithering, \nsncomp~and \zcompb~distributions are uniform on the whole survey area. The dithering tends increase the cadence of observation and to decrease both \nsncomp~and \zcompb~(per pixel). The dithered pointings of the telescope are estimated from the central location of the fields (Tab. \ref{tab:locddf}) and lead to a distribution map of the metrics decreasing as the (pixel) distance to the central location increases. A more subtle effect is observed (Fig. \ref{fig:dither}) when all the pixel are considered to estimate (\nsncomp, \zcompb). It depends both on the cadence and on \nvisits. \zcompb~tends to decrease with an increase of the translationnal dither offset (\doffset), with a greater effect for low cadences. The total number of supernovae systematically decreases with \doffset~for high cadences. For low cadences, \nsncomp~tends to increase with \doffset~up to a maximum value (cadence dependent) and then decreases. This beheaviour is to be explained by two opposite effects in the estimation of \nsncomp: a decrease of the cadence and an increase of the survey area with \doffset.
+The translationnal dithering is expected to affect both the number of well-sampled supernovae and the redshift of completeness for each of the pixel of a field. With no dithering, \nsncomp~and \zcompb~distributions are uniform on the whole field area. The dithering tends increase the cadence of observation and to decrease both \nsncomp~and \zcompb~(per pixel). The dithered pointings of the telescope are estimated from the central location of the fields (Tab. \ref{tab:locddf}) and lead to a distribution map of the metrics decreasing as the (pixel) distance to the central location increases. A more subtle effect is observed (Fig. \ref{fig:dither}) when all the pixel are considered to estimate (\sumnsncomp, \zcompb). It depends both on the cadence and on \nvisits. \zcompb~tends to decrease with an increase of the translationnal dither offset (\doffset), with a greater effect for low cadences. The total number of supernovae systematically decreases with \doffset~for high cadences. For low cadences, \sumnsncomp~tends to increase with \doffset~up to a maximum value (cadence dependent) and then decreases. This beheaviour is to be explained by two opposite effects in the estimation of \sumnsncomp: a decrease of the cadence and an increase of the survey area with \doffset.
 
 \begin{figure}[htbp]
   \begin{center}
@@ -234,11 +242,15 @@ The translationnal dithering is expected to affect both the number of well-sampl
 
 
 
-\section{Towards an optimization of the DD survey}
+\section{Towards an optimization of the number of visits}
 \label{sec:opti}
-\subsection{Optimization method}
-The analysis of the most recent simulations have shown (see \ref{sec:analysis}) that it was difficult, with the proposed cadences of observation, filter allocation and season lengths, to collect complete samples of \sne~with redshift higher than \zcompb\seq 0.55-0.6 for a DD budget of \seq 5\per.  A high budget (\seq 13.5\per) is requested to reach \zcompb\seq 0.65. These redshift limits are well below the ambitious goal of \zcompb\seq1. But we do not know, at this stage, whether this goal is achievable while respecting the design requirements (sec. \ref{sec:design}). We propose in the following a method to adress this question.\par
-As described in \ref{eq:ddbudget} the DD budget depends primarily on 4 parameters: the number of fields to observe, the season length (per field and per season), the cadence of observation (per field and per season), and the number of visits \nvisitsb~per filter and per observing night. \nvisitsb~affect \snrb~through the flux measurement uncertainties  $\sigma_i^b$. In the background-dominated regime one has $\sigma_i^b \simeq \sigma_5^b$ where $\sigma_5^b$ is equal by definition to
+
+The analysis of the most recent simulations have shown (see Sec. \ref{sec:analysis}) that it was difficult, with the proposed cadences of observation, filter allocation and season lengths, to collect complete samples of \sne~with redshift higher than \zcompb\seq 0.55-0.6 for a DD budget of \seq 5\per.  %A high budget (\seq 13.5\per) is requested to reach \zcompb\seq 0.65.
+The redshift limits are mainly driven by \sumnvisitsb$\times$ cadence. With optimal survey parameters (i.e. a regular cadence of observation of one day, no dithering, minimal fluctuation of observing conditions) the depth of the four families considered in Sec. \ref{sec:analysis} would be \zcompb $\sim$ (0.77,0.59,0.54,0.72) for (\osfamily{baseline},\osfamily{agn},\osfamily{daily},\osfamily{desc}), respectivelly. These values are well below the ambitious goal of \zcompb\seq1. According to Eq. \ref{eq:zlimsnr} the only way to reach higher redshift limits is to increase the minimal SNR requested in each band that is, in turn, to choose 
+
+\snrb (that is \sumnvisitsb$\times$ cadence) while choosing the optimal filter allocation.  
+\par
+As described in Eq. \ref{eq:ddbudget} the DD budget depends primarily on 5 parameters: the number of fields to observe, the season length (per field and per season), the number of seasons of observation, the cadence of observation (per field and per season), and the number of visits \nvisitsb~per filter and per observing night. \nvisitsb~affect \snrb~through the flux measurement uncertainties  $\sigma_i^b$. In the background-dominated regime one has $\sigma_i^b \simeq \sigma_5^b$ where $\sigma_5^b$ is equal by definition to
 \begin{equation}
  \sigma_5^b &=& {{f_5^b}\over{5}}
 \end{equation}
