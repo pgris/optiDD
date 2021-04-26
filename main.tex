@@ -55,6 +55,7 @@
 \newcommand{\cdfs}{{\sc CDF-S}}
 \newcommand{\adfa}{{\sc ADF-A}}
 \newcommand{\adfb}{{\sc ADF-B}}
+\newcommand{\adfs}{{\sc EUCLID/Roman}}
 \newcommand{\euclid}{{\sc EUCLID}}
 \newcommand{\romanspace}{{\sc Roman Space Telescope}}
 \newcommand{\wfirst}{{\sc WFIRST}}
@@ -73,7 +74,7 @@
 \newcommand{\seq}{$\sim$}
 \newcommand{\nvisits}{$N_{visits}$}
 \newcommand{\nvisitsb}{\mbox{$N_{visits}^b$}}
-\newcommand{\sumnvisitsb}{\mbox{$\sum\limits_{b}N_{visits}^b \]$}}
+\newcommand{\sumnvisitsb}{\mbox{$\sum\limits_{b}N_{visits}^b$}}
 \newcommand{\nvisitsbmin}{\mbox{$N_{visits,min}^b$}}
 \newcommand{\nvisitsy}{$N_{visits}^y$}
 \newcommand{\nvisitsall}{$N_{visits}^g,N_{visits}^r,N_{visits}^i,N_{visits}^z,N_{visits}^y$}
@@ -192,20 +193,24 @@ where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season
 
 \section{Metrics to assess observing strategies}
 \label{sec:metrics}
-The metrics used to assess observing strategies are estimated from full simulation of light curves. We have used the SALT2 model (\citealt{Guy_2007,Guy_2010}) where a \sne~is described by five parameters: \snx, the normalization of the SED sequence; \snstretch, the stretch; \sncolor, the color; \daymax, the day of maximum luninosity; and $z$, the redshift. a flat-$\Lambda$CDM model was used to estimate cosmological distances, with $H_0$ = 70 km s$^{-1}$, $\Omega_m$ = 0.3 and $\Omega_\Lambda$ = 0.7.
+The metrics used to assess observing strategies are estimated from full simulation of light curves. We have used the SALT2 model (\citealt{Guy_2007,Guy_2010}) where a \sne~is described by five parameters: \snx, the normalization of the SED sequence; \snstrech, the stretch; \sncolor, the color; \daymax, the day of maximum luninosity; and $z$, the redshift. a flat-$\Lambda$CDM model was used to estimate cosmological distances, with $H_0$ = 70 km s$^{-1}$, $\Omega_m$ = 0.3 and $\Omega_\Lambda$ = 0.7.
 \par
-In SALT2, model uncertainties of $g$ and $r$-band (rest-frame UV) light-curves fluxes are large(\citealt{Guy_2007}). $g$ and $r$ observations with relative error model larger than 10$\%$ have not been considered in this study. This requirement implies that the list of filters useful to measure photometric light-curves (observer-frame) is redshift-dependent: $gri$ bands up to $z\lesssim$0.3-0.4, $rizy$ bands for $0.4\lesssim z \lesssim 0.6-0.7$, and $ izy$ bands for $z\gtrsim 0.7$.
+In SALT2, model uncertainties of $g$ and $r$-band (rest-frame UV) light-curves fluxes are large(\citealt{Guy_2007}). $g$ and $r$ observations with relative error model larger than 10$\%$ have not been considered in this study. This requirement implies that the list of filters useful to measure photometric light-curves (observer-frame) is redshift-dependent: \bg\br\bi~for $z\lesssim$0.1,  \bg\br\bi\bz~for $0.1\lesssim z\lesssim$0.3-0.4, \br\bi\bz\by~for $0.4\lesssim z \lesssim 0.6-0.7$, and \bi\bz\by~for $z\gtrsim 0.7$.
 \par
 We rely on two metrics to assess observing strategies: the redshift limit \zlim, and the number of well-measured \sne, \nsn. A well-measured \sne~is defined by the following tight selection criteria: light curves points with $SNR\geq$ 1; at least four (ten) epochs before (after) maximum luminosity; at least one point with a phase lower(higher) than -10(20); and \sigc$\leq$0.04 where \sigc~ is the error on the color parameter of the supernova (this corresponds to \sigmu$\leq$0.12 where \sigmu~is the distance modulus error). The redshift limit is defined as the maximum redshift of supernovae passing these selection criteria.
 \par
 The estimation of \zlim~is mainly driven by the selection on the error of the color, \sigc$\leq$0.04. \sigc~reflects the quality of the collected light curves, result of the cadence of observation (sampling) and of the flux uncertainty measurements (observing conditions). \sigc~estimation is strongly correlated to the Signal-to-Noise Ratio (SNR) per band, \snrb,  defined by:
 \begin{equation}
-  SNR^b &=& \sqrt{\sum_{i=1}^{n^b}{\left({{f_i^b}\over{\sigma_i^b}}\right)^2}}
+  \begin{aligned}
+    SNR^b &= \sqrt{\sum_{i=1}^{n^b}{\left(\frac{f_i^b}{\sigma_i^b}\right)^2}}
+    \end{aligned}
   \label{eq:snrb}
 \end{equation}
 where $f^b$, and $\sigma^b$ are the fluxes and fluxes uncertainties. The summation runs over the number of light curve points. Requesting \sigc$\leq 0.04$ is equivalent to requiring a minimal SNR per band and the link between \zlim~and \snrb~may be written:
 \begin{equation}
-  \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\snrb \geq \snrbmin)
+  \begin{aligned}
+    \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\snrb \geq \snrbmin)
+    \end{aligned}
  \label{eq:zlimsnr}
 \end{equation}
 The redshift of a complete sample, \zcompb, is estimated from the redshift limit distribution, \zlimfaint, of a simulated set of faint supernovae with \daymax~values spanning over the season duration of a group of observations. \zcompb~is defined as the 95th percentile of the \zlimfaint~cumulative distribution.
@@ -225,7 +230,7 @@ impact on the size and depth of the SN sample. The main source of gaps for the D
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{nsn_zlim_zoom.png}
+  \includegraphics[width=1.\textwidth]{nsn_zlim_zoom.png}
  \caption{\nsncomp~vs \zcompb~for the observing strategies considered in this paper.}\label{fig:nsn_zlim_zoom}
 \end{center}
 \end{figure}
@@ -250,24 +255,32 @@ The redshift limits are mainly driven by \sumnvisitsb$\times$ cadence. With opti
 \par
 As described in Eq. \ref{eq:ddbudget} the DD budget depends primarily on 5 parameters: the number of fields to observe, the season length (per field and per season), the number of seasons of observation, the cadence of observation (per field and per season), and the number of visits \nvisitsb~per filter and per observing night. \nvisitsb~affect \snrb~through the flux measurement uncertainties  $\sigma_i^b$. In the background-dominated regime one has $\sigma_i^b \simeq \sigma_5^b$ where $\sigma_5^b$ is equal by definition to
 \begin{equation}
- \sigma_5^b &=& {{f_5^b}\over{5}}
+  \begin{aligned}
+    \sigma_5^b &=  \frac{f_5^b}{5}
+    \end{aligned}
 \end{equation}
 where $f_ 5^b$ is the five-sigma flux related to the five-sigma depth magnitude $m_5^b$ through:
 \begin{equation}
-  m_5^b &=& -2.5 \log f_5^b+zp^b
+  \begin{aligned}
+    m_5^b &= -2.5 \log f_5^b+zp^b
+    \end{aligned}
 \end{equation}
 where $zp^b$ is the zero point of the considered filter.  $m_5^b$ is related to \nvisitsb through:
 \begin{equation}
-  m_5^b - m_5^{b, single~visit} & = & 1.25 \log(N_{visits}^b)
+  \begin{aligned}
+    m_5^b - m_5^{b, single~visit} & =  1.25 \log(N_{visits}^b)
+    \end{aligned}
   \label{eq:opt4}
 \end{equation}
 where $m_5^{b, single~visit}$ is the five-sigma depth corresponding to a single visit, a parameter depending on observing conditions. These equations \eqref{eq:opt1}-\eqref{eq:opt4} describe the relationship between \snrb~ and \nvisitsb. The request $\snrb~\geq~\snrbmin$ is equivalent to $\nvisitsb~\geq~\nvisitsbmin$ and equ. \eqref{eq:zlimsnr} may be written:
 \begin{equation}
-  \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\nvisitsb~\geq~\nvisitsbmin)
+  \begin{aligned}
+    \zlim &\Longleftarrow & \sigc \leq 0.04 & \Longleftarrow &\cap (\nvisitsb~\geq~\nvisitsbmin)
+    \end{aligned}
  \label{eq:zlimnvisits}
 \end{equation}
 \\
-The relations \eqref{eq:zlimsnr} and \eqref{eq:zlimnvisits} are not univocal. A lot of \snrb~combinations lead in fact to the same result and constraints have to be applied to choose the optimal configuration. We have performed a systematic scan of the \snr~parameter space (\snrg,\snrr,\snri,\snrz,\snry) and picked combinations with \sigc$\simeq$0.04.  The optimal solution is selected by minimizing the total number of visits per observing night and by fixing a maximum number of visits in the y-band (namely \nvisitsy$\leq$20). This selection aims at reducing the systematic (potentially severe) effects of the \by~band. The result is displayed on Fig. \ref{fig:nvisits_zlim} for a 1 day cadence. 
+The relations \eqref{eq:zlimsnr} and \eqref{eq:zlimnvisits} are not univocal. A lot of \snrb~combinations lead in fact to the same result and constraints have to be applied to choose the optimal configuration. We have performed a systematic scan of the SNR parameter space (\snrg,\snrr,\snri,\snrz,\snry) and picked combinations with \sigc$\simeq$0.04.  The optimal solution is selected by minimizing the total number of visits per observing night and by fixing a maximum number of visits in the y-band (namely \nvisitsy$\leq$20). This selection aims at reducing the systematic (potentially severe) effects of the \by~band. The result is displayed on Fig. \ref{fig:nvisits_zlim} for a 1 day cadence. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -322,11 +335,19 @@ A GUI (Fig. \ref{fig:budget_gui}) was designed from the results of sec. \ref{sec
 \end{figure}
 \end{comment}
 
-Observing 5 fields for ten years up to \zcomp $\sim$ 0.9 would certainly give access to a large sample of well-measured \sne~(around 11k) but also to an unrealistic scenario (DD budget: 87\%). The only way to reach higher \zcomp~while maintaining a reasonable budget is to reduce the number of seasons of observation. This is the purpose of the Rolling Deep Drilling (RDD) strategy characterized by a limited number of seasons of observation per field (typically 2) and a large number of visits per observing night.
+Observing 5 fields for ten years up to \zcomp $\sim$ 0.9 would certainly give access to a large sample of well-measured \sne~(around 11k) but also to an unrealistic scenario (DD budget: 87\%). The only way to reach higher \zcomp~while maintaining a reasonable budget is to reduce the number of seasons of observation. This is the purpose of the Rolling Deep Drilling (RDD) strategy characterized by a limited number of seasons of observation per field (typically 2) and a large number of visits per observing night (more than 200 for higher \zcomp).
 
 \par
-Building a consistent RDD strategy is not only a matter of adjusting LSST survey settings to stay within a reasonable budgetary envelope. Photometry will be used to collect the sample of well-measured \sne and to estimate their host redshifts. But spectroscopic measurements will be necessary, either to confirm the type of the supernovae collected (and used for photometric classification), and to estimate host redshifts with high accuracy. Available spectroscopic resources have to be taken into account to design an optimal RDD survey for supernovae.
+Building a consistent RDD strategy is not only a matter of adjusting LSST survey settings to stay within a reasonable budgetary envelope. Spectral measurements will be essential to the success of the supernovae program, to ensure a spectroscopic follow-up of all the well-measured supernovae collected (photometric classification), and to estimate host redshifts with high accuracy. Among available spectroscopic resources of interest for the RDD survey are the Primary Focus Spectrograph (PFS), and 
 
+have to be taken into account to design an optimal LSST-RDD survey for supernovae. 
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{budget_zcomp.png}
+  \caption{DD budget as a function of the redshift of completeness for a set of scenarios where the redshift of completeness of \cosmos~and \xmm~is set to 0.9. Subscripts correspond to the number of seasons of observation and superscripts to the redshift limit. ER stands for Euclid/Roman field. Highest \zcomp~values are reached for a minimal strategy composed of two seasons of observations of \cosmos~and \xmm~with a depth of 0.9 plus 4 seasons of observation of the \adfs~ field (1 pointing). Coloured areas correspond to a variation of the number of $y$-band visits (20$\leq N_{visits}^y \leq$ 80).}\label{fig:budget_zcomp}
+\end{center}
+\end{figure}
 \par
 
 
@@ -363,50 +384,6 @@ Building a consistent RDD strategy is not only a matter of adjusting LSST survey
 \end{comment}
 
 % ----------------------------------------------------------------------
-
-\section{Type Ia supernovae as probe for assessing observing strategy}
-\label{sec:snprobes}
-Type Ia supernovae are transient astronomical events resulting from a powerful and luminous explosion of a white dwarf. They are identified by their brightness evolution, with a luminosity peak about 15 days after explosion, and a slow decrease lasting up to few months. It is expected that all type Ia supernovae observed in the DD fields in LSST will be identified from spectral features. Accurate supernova parameters will be estimated from well-measured light curves characterized by a sampling of few days and high Signal-to-Noise Ratio per band (\snrb). These two quality criteria are determined at the first order by two key parameters of observing strategies: the cadence of observation, and the number of visits per band.
-\par
-Rest-frame wavelengths of type Ia supernovae range from $\sim$380 nm (blue cut-off) to $\sim$800 nm (red cut-off). Since the flux fraction per band (observer frame) varies with the redshift, these two limits have an impact on the possible list of bands with minimal flux useable to observe supernovae (Tab. \ref{tab:zfilters}): only three bands (\bi\bz\by) are useable in the redshift range 0.64-0.98 and only two (\bz\by) for redshifts higher than $\sim$1. 
-
-\begin{table}[!htbp]
-  \caption{Available bands with minimal flux vs redshift.}\label{tab:zfilters}
-  \begin{center}
-    \begin{tabular}{c|c}
-      \hline
-      \hline
-      Redshift range & available bands \\
-      \hline
-      0.01-0.1 & \bg\br\bi\\
-      0.1-0.3 & \bg\br\bi\bz \\
-      0.3-0.64 & \br\bi\bz\by \\
-      0.64-0.98 & \bi\bz\by \\
-      $\geq$ 0.98 & \bz\by \\
-      \hline
-      \end{tabular}
-  \end{center}
-\end{table}
-
-Type Ia supernovae may be described by five parameters (\salt~model): stretch\strech, color \col, time of maximum luminosity \daymax, normalization of the SED \xnorm, and the redshift \z.  They are measured from light curve fits to estimate the Hubble diagram distance modulus:
-\begin{equation}
-  \mu =m_B^*- M_B+\alpha \times x_1 -\beta \times c \label{eq:mu}
-\end{equation}
-where $m_B^*$ corresponds to the observed peak magnitude in rest-frame B-band and $\alpha$($\simeq$ 0.14),$\beta$($\simeq$ 3.1) and $M_B$ are nuisance parameters. The distance modulus error \sigmu~is dominated by the error on the color \sigc: measuring $\mu$ at the precent level  requires to have \sigc$\lesssim$0.04.
-
-Since \sigc~varies with the redshift  (Fig. \ref{fig:sigc_z}, top), the requirement \sigc$\lesssim$0.04 leads to a redshift limit value (0.61 in \ref{fig:sigc_z}, top) defining the limit of the completeness of the survey (\zlim) if \sigc~is estimated using faint type Ia supernovae with (\strech,\col)=(-2.0,0.2). One may also observe (\ref{fig:sigc_z}, bottom) that \sigc~also depends (as expected) on \snrb. This means that the condition \sigc$\lesssim$0.04 requires \snrb$\geq$\snrbmin, where \snrbmin~is a minimal signal-to-noise ratio for each of the bands available in the redshift range considered (Tab. \ref{tab:zfilters}).
-
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[width=0.9\textwidth]{sigmaC_z.png}
- \caption{Color error \sigc~as a function of redshift (top) and signal-to-noise ratio per band \snrb~as a function of \sigc~(bottom) for a faint type Ia supernova.}\label{fig:sigc_z}
-\end{center}
-\end{figure}
-
-
-
-
-
 
 % ----------------------------------------------------------------------
 
