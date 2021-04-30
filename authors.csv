@@ -29,4 +29,5 @@
 #
 # ======================================================================
 Lastname,Firstname,Authorname,AuthorType,Affiliation,Contribution,Email
-"Author", "Ann","A.~N.~Author",Contact,"Affiliation","Contribution","ann.author@dev.null"
+Gris,Philippe,Ph.~Gris,Contact,"Laboratoire de Physique de Clermont (LPC) , CNRS/IN2P3, F-63000 Clermont-Ferrand, France","blabla",philippe.gris@clermont.in2p3.fr
+Regnault,Nicolas,N.~Regnault,Contributor,"Laboratoire de Physique Nucléaire et des Hautes Energies, IN2P3/CNRS, France","blabla",nicolas.regnault@lpnhe.in2p3.fr
