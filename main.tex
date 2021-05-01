@@ -6,8 +6,8 @@
 \setjournal{\flag}
 
 %\documentclass[\docopts]{\docclass}
-%\documentclass[skiphelvet,preprint]{aastex631}
-\documentclass[skiphelvet,twocolumn]{lsstdescnote}
+\documentclass[skiphelvet,twocolumn]{aastex63}
+%\documentclass[skiphelvet,preprint,twocolumn]{lsstdescnote}
 % You could also define the document class directly
 %\documentclass[]{emulateapj}
 
@@ -15,12 +15,13 @@
 \usepackage{lsstdesc_macros}
 \usepackage{rotating}
 \usepackage{graphicx}
-\usepackage{diagbox}
+%\usepackage{diagbox}
 \usepackage{multirow}
 \usepackage{adjustbox}
 \usepackage{comment}
 \usepackage{mathtools}
 \usepackage{textcomp}
+\usepackage[toc,page]{appendix}
 
 %\usepackage{pdflscape}
 \graphicspath{{./}{./figures/}}
@@ -58,10 +59,10 @@
 \newcommand{\adfa}{{ADF-A}}
 \newcommand{\adfb}{{ADF-B}}
 \newcommand{\adfs}{{Euclid/Roman}}
-\newcommand{\euclid}{{EUCLID}}
+\newcommand{\euclid}{{Euclid}}
 \newcommand{\romanspace}{{\sc Roman Space Telescope}}
 \newcommand{\wfirst}{{\sc WFIRST}}
-\newcommand{\sne}{{SNe Ia}}
+\newcommand{\sne}{{SNe~Ia}}
 \newcommand{\degsq}{{deg$^2$}}
 \newcommand{\nsn}{{$N_{SN}^{z\leq z_{lim}}$}}
 \newcommand{\nsncomp}{{$N_{SN}^{z\leq z_{complete}}$}}
@@ -90,19 +91,21 @@
 
 \title{LSST Deep Drilling program and Supernovae}
 
+\input{authors}
+
 \maketitlepre
 
 \begin{abstract}
   
-  The ambition of the Rubin Observatory Legacy Survey of Space and Time (LSST) Supernovae (\sne) program is to unveil the nature of dark energy. %Collecting a large sample of well-measured type Ia supernovae is a prerequisite to reduce systematic uncertainties on cosmological parameters. The average quality of the photometry light curves depends primarily on observing strategy. %The main Wide Fast Deep (WFD) survey will provide an unprecedented number of well-sampled \sne~up to redshift completeness of $\sim$0.2-0.3.
-The Deep Drilling Field (DDF) mini-survey is critical for collecting a sample of high-redshift (up to $z\simeq$1) of well-measured supernovae which improves cosmological constraints from \sne. The goal of this paper is to quantify the impact of the DDF strategy parameters (number of fields, cadence, number of season of observation, number of visits per band, budget) on the redshift completeness and number of \sne. Detailed analysis of recent LSST simulations show that the depth of the DD survey (limited to $z\sim0.65$) could be explained by an insufficient signal-to-noise ratio (per band) or equivalently by an inappropriate number of visits per band. We propose a method that provides a guidance in the estimation of the number of visits (per band) requested to reach higher redshifts. The results of this method are used to precise the contours of DDF scenarios that would lead to the observation of a large sample of well-measured \sne~up to higher redshifts. We have taken synergistic dataset into account (Euclid/Roman and spectroscopy for follow-up and host-galaxy redshift) to build a realistic DD survey characterised by a low cadence (one day), a rolling strategy (each field observed at least two seasons), and two sets of fields: ultra-deep ($z\gtrsim0.9$) and deep ($z\gtrsim0.5$) fields. Further studies (i.e. accurate joint simulations with concerned endeavours) are requested to finalize the settings of this Deep Rolling (DR) strategy.
+  The ambition of the Rubin Observatory Legacy Survey of Space and Time (LSST) Supernovae (\sne) program is to unveil the nature of Dark Energy by measuring cosmological parameters with a high degree of accuracy. Collecting a large sample of well-measured type Ia supernovae is a prerequisite to reduce systematic uncertainties on cosmological parameters. The average quality of the photometric light curves is primarily driven by observing strategy %The main Wide Fast Deep (WFD) survey will provide an unprecedented number of well-sampled \sne~up to redshift completeness of $\sim$0.2-0.3.
+and the Deep Drilling Field (DDF) mini-survey is critical for collecting a sample of high-redshift (up to $z\simeq$1) of well-measured supernovae which improves cosmological constraints from \sne. The goal of this paper is to quantify the impact of the DDF strategy parameters (number of fields, cadence, number of season of observation, number of visits per band, budget) on the redshift completeness and number of \sne. Detailed analysis of recent LSST simulations show that the depth of the DD survey (limited to $z\sim0.65$) could be explained by an insufficient signal-to-noise ratio (per band) or equivalently by an inappropriate number of visits per band. We propose a method that provides a guidance in the estimation of the number of visits (per band) requested to reach higher redshifts. The results of this method are used to precise the contours of DDF scenarios that would lead to the observation of a large sample of well-measured \sne~up to higher redshifts. We have taken synergistic dataset into account (Euclid/Roman and spectroscopy for follow-up and host-galaxy redshift) to build a realistic DD survey characterised by a low cadence (one day), a rolling strategy (each field observed at least two seasons), and two sets of fields: ultra-deep ($z\gtrsim0.9$) and deep ($z\gtrsim0.5$) fields. Further studies (i.e. accurate joint simulations with concerned endeavours) are requested to finalize the settings of this Deep Rolling (DR) strategy.
 
 \end{abstract}
 
 % Keywords are ignored in the LSST DESC Note style:
-\dockeys{}
+\dockeys{Cosmology; Supernovae; Astronomy software; Observing Strategy}
 
-\maketitlepost
+%\maketitlepost
 
 % ----------------------------------------------------------------------
 % {% raw %}
@@ -113,21 +116,19 @@ Type Ia supernovae(\sne) are transient astronomical events resulting from a powe
 \par
 The stated ambition of the Rubin Observatory Legacy Survey of Space and Time (LSST) Supernovae program is to maximize the sample size of well-measured type Ia supernovae while reducing systematic uncertainties on cosmological parameters. Increasing the statistics in the Hubble diagram requires (1) advances in the measurement of the distances (i.e.  a control at the per-mil level of the photometry and survey flux calibration, and a progress in standardization technique) (2) a better control of the astrophysical environment and its potential impacts on the SN light curves and distances (local host properties, absorption) (3) a better control of the SN diversity (SN~Ia sub-populations, population drift with redshift) (4) a precise determination of the survey selection function (SN identification, residual contamination by non-SN~Ia's as a function of redshift). Having access to a {\it large sample} of {\it well-measured} \sne~is a prerequisite for a successful completion of this list of improvements.
 \par
-The ten-year Rubin Observatory Legacy Survey of Space and Time (LSST) will image billions of objects in six colors. 80 to 90\per of the observing time will be dedicated to Wide Fast Deep(WFD) primary survey, which will cover half of the sky ($\sim$ 18000 \degsq) at a ''universal'' cadence. The remaining observing time will be shared among other programs (mini-surveys) including intensive scanning of a set of Deep Drilling (DD) fields. It is expected that about 10\per (100\per) of \sne~observed in the WFD (DD) survey will be identified from spectral features. Accurate supernova parameters will be estimated from well-measured light curves characterized by a sampling of few days and high Signal-to-Noise Ratio per band (\snrb).  %As a consequence all the studies presented in this paper rely on the supernova light curves only.
+The ten-year Rubin Observatory Legacy Survey of Space and Time (LSST) will image billions of objects in six colors. 80 to 90\per of the observing time will be dedicated to Wide Fast Deep(WFD) primary survey, which will cover half of the sky ($\sim$ 18000 \degsq) at a ''universal'' cadence. The remaining observing time will be shared among other programs (mini-surveys) including intensive scanning of a set of Deep Drilling (DD) fields. It is expected that about 10\per~(100\per) of \sne~observed in the WFD (DD) survey will be identified from spectral features. Accurate supernova parameters will be estimated from well-measured light curves characterized by a sampling of few days and high Signal-to-Noise Ratio per band (\snrb).  %As a consequence all the studies presented in this paper rely on the supernova light curves only.
 Obtaining high quality light curves is therefore a key design point of the SN survey:  the average quality of the light curves depends primarily on the observing strategy.
 \par
 In a recent paper (\cite{lochner2021impact}), the Dark Energy Science Collaboration (DESC) has presented an analysis of the WFD survey of observing strategies simulated by the LSST project\footnote{These strategies are available from https://community.lsst.org/t/community-survey-strategy-highlights/4760.}. The conclusion is that an unprecedented number of high quality \sne~will be observed in the WFD survey (between 120k and 170k) up to redshifts $z\sim 0.3$. The DD Supernovae program is necessary for obtaining a sample of high-redshift (up to $z\simeq$1) and well-measured supernovae which improves cosmological constraints from \sne. Achieving Stage IV dark energy goals will critically rely on the deep drilling fields of LSST.
 \par
 %This paper compiles a set of studies related to the DD program of LSST.
-This paper deals with the interplay between the DD strategy and \sne. The main goal is to evaluate the impact of the strategy parameters (number of fields to observe, number of seasons, season lengths, numer of visits per night and per field, budget, ...) on the size and depth of the well-measured \sne~sample that would be collected by the survey. The idea is to assess whether observing \sne~up to $z\simeq$1 is achievable given design constraints, including in particular the number of visits alloted to DDFs. This article is subdivided into 6 sections. The design constraints of the DD program and the metrics used to assess observing strategies are described in the first two parts. A detailed analysis of recent DD simulations proposed by the project is presented in the third section. A method to optimize the DD program is proposed in a fourth part. The last section of the document is dedicated to the presentation of  DD realistic scenarios that would achieve the goal of observing high quality \sne~up to  $z\simeq$1.
+This paper deals with the interplay between the DD strategy and \sne. The main goal is to evaluate the impact of the strategy parameters (number of fields to observe, number of seasons, season lengths, numer of visits per night and per field, budget, ...) on the size and depth of the well-measured \sne~sample that would be collected by the survey. The idea is to assess whether observing \sne~up to $z\simeq$1 is achievable given design constraints, including in particular the number of visits alloted to DDFs. This article is subdivided into 6 sections. The design constraints of the DD program and the metrics used to assess observing strategies are described in the first two parts. A detailed analysis of recent DD simulations proposed by LSST is presented in the third section. A method to optimize the DD program is proposed in a fourth part. The last section of the document is dedicated to the presentation of  DD realistic scenarios that would achieve the goal of observing high quality \sne~up to  $z\simeq$1.
 
 \section{Deep Drilling survey design constraints}
 \label{sec:design}
 Survey parameters having an impact on the design of the DD mini-surveys are the number of fields to be observed, the cadence of observation, the number of season of observation, the season length, and, last but not least, the budget.
 \par
 Four distant extragalactic survey fields that LSST guarantees to observe as Deep Drilling Fields were selected in 2012\footnote{http://ls.st/bki}: \cosmos, \elais, \xmm, \cdfs~(Tab. \ref{tab:locddf}). More recently, the DESC collaboration has supported the LSST DDF coverage of the southern deep fields area to ensure contemporaneous observations with \euclid~(\citealt{laureijs2011euclid,Amendola_2013}) and \romanspace~(\citealt{spergel2015widefield}), at the begining and at mid-term of the LSST survey, respectively.
-\par
-The number of exploding supernovae is proportional to the number of season of observatio and to the season duration (\citealt{perrett}). Maximizing season length is particularly important in the DDFs because of time dilation. Season lengths of at least six months are required to maximize the size of the sample of well-measured \sne.
 \begin{table}[!htbp]
   \caption{Location of the DD fields considered in this study. ADF-A and ADF-B are example of south fields in the \adfs~area simulated in LSST observing strategy.}\label{tab:locddf}
   \begin{center}
@@ -152,6 +153,8 @@ The number of exploding supernovae is proportional to the number of season of ob
 \par
 A regular cadence\footnote{The cadence is defined as the median of inter-night gaps.} of observation ($\sim$ 3 days max) is required to collect well-sampled light curves (LC). The number of large gaps ($>$10 days) between visits degrades the 
 measurements of luminosity distances, and potentially result in rejecting large sets of light curves of poor quality.
+\par
+The number of exploding supernovae is proportional to the number of season of observatio and to the season duration (\citealt{perrett}). Maximizing season length is particularly important in the DDFs because of time dilation. Season lengths of at least six months are required to maximize the size of the sample of well-measured \sne.
 \par
 It is expected that 5-15$\%$ of the total number of LSST visits will be alloted to the DD program and shared among science topics interested by DD observations (such as AGN, supernovae, ...).  This limited budget is related to the total number of visits per observing night through the relation:
 \begin{equation}\label{eq:ddbudget}
@@ -223,9 +226,9 @@ The redshift of a complete sample, \zcompb, is estimated from the redshift limit
 
 \section{Analysis of recent simulations}
 \label{sec:analysis}
-The LSST project has periodically released few sets of simulations during the few past years. These simulations contain a large number of WFD strategies depending on area observed, filter allocation, weather impact, scanning strategy, ... (for more details see ). The diversity of DD scenarios is rather limited and we have choosen to analyze a set of observing strategies with representative DD surveys on the basis of the following criteria: number of visits (and filter allocation) per observing night, cadence of observation, dithering, and budget. The list of observing strategies is given in Tab. \ref{tab:os}.
+The LSST project has periodically released few sets of simulations during the past years. These simulations contain a large number of WFD strategies depending on area observed, filter allocation, weather impact, scanning strategy, ... (for more details see ). The diversity of DD scenarios is rather limited and we have choosen to analyze a set of observing strategies with representative DD surveys on the basis of the following criteria: number of visits (and filter allocation) per observing night, cadence of observation, dithering, and budget. The list of observing strategies is given in Tab. \ref{tab:os}.
 
-\input{texfiles/dd_summary_0_filteralloc}
+%\input{texfiles/dd_summary_0_filteralloc}
 %\input{texfiles/dd_summary_1}
 %\input{texfiles/dd_summary_2}
 %\input{texfiles/dd_summary_3}
@@ -233,26 +236,26 @@ Four sets of observing strategies may be extracted from Tab. \ref{tab:os} accord
 The redshift completeness value is mainly driven by the number of visits per observing night and by the cadence. We would expect \zcompb$\sim$(0.75,0.52,0.48,0.65) for (\osfamily{baseline},\osfamily{agn},\osfamily{daily},\osfamily{desc}), respectivelly, for a regular cadence of 2 days and median observing conditions. The corresponding expected number of well-measured supernovae would be of (9000,3400,2700,6200) without dithering. A comparison of these numbers with Fig. \ref{fig:nsn_zlim_zoom} reveals that the values of the pair metric (\nsncomp, \zcompb) are the complex outcome of the combination of the following (ranked by order) parameters: number of visits per observing night$\times$cadence, season length, dithering, observing conditions. Gaps of more than $\sim$ 5-7 days in a 2 days median cadence have a harmful
 impact on the size and depth of the SN sample. The main source of gaps for the DDF survey is due to telescope downtime (clouds, telescope maintenance) which leads to about 16-20$\%$ of nights without observation per season.  
 
-\begin{figure}[htbp]
+\begin{figure*}[htbp]
 \begin{center}
-  \includegraphics[width=1.\textwidth]{nsn_zlim_zoom.png}
+  \includegraphics[width=0.8\textwidth]{nsn_zlim_zoom.png}
  \caption{\nsncomp~vs \zcompb~for the observing strategies considered in this paper.}\label{fig:nsn_zlim_zoom}
 \end{center}
-\end{figure}
+\end{figure*}
 
 \par
 The translationnal dithering is expected to affect both the number of well-sampled supernovae and the redshift completeness for each of the pixel of a field. With no dithering, \nsncomp~and \zcompb~distributions are uniform on the whole field area. The dithering tends increase the cadence of observation and to decrease both \nsncomp~and \zcompb~(per pixel). The dithered pointings of the telescope are estimated from the central location of the fields (Tab. \ref{tab:locddf}) and lead to a distribution map of the metrics decreasing as the (pixel) distance to the central location increases. A more subtle effect is observed (Fig. \ref{fig:dither}) when all the pixel are considered to estimate (\sumnsncomp, \zcompb). It depends both on the cadence and on \nvisits. \zcompb~tends to decrease with an increase of the translationnal dither offset (\doffset), with a greater effect for low cadences. The total number of supernovae systematically decreases with \doffset~for high cadences. For low cadences, \sumnsncomp~tends to increase with \doffset~up to a maximum value (cadence dependent) and then decreases. This beheaviour is to be explained by two opposite effects in the estimation of \sumnsncomp: a decrease of the cadence and an increase of the survey area with \doffset.
 
 \begin{figure}[htbp]
   \begin{center}
-  \includegraphics[width=0.9\textwidth]{dither_ddf.png}
+  \includegraphics[width=0.5\textwidth]{dither_ddf.png}
  \caption{Ratio of the number of supernovae $N_{SN}/N_{SN}^{nodither}$ (top) and \zcompb~difference (bottom) as a function of translationnal dither offset. The simulations labelled as 'Fakes' (dotted lines) correspond to regular cadences (1,2,3,5 days) with median observing conditions (5$\sigma$ depth single exposure: 24.13/23.84/23.45/22.74/22.10 for $g/r/i/y/z$ bands, respectivelly.}\label{fig:dither}
 \end{center}
 \end{figure}
 
 
 
-\section{Towards an optimization of the number of visits}
+\section{Optimization of the number of visits}
 \label{sec:opti}
 
 The analysis of the most recent simulations have shown (see Sec. \ref{sec:analysis}) that it was difficult, with the proposed cadences of observation, filter allocation and season lengths, to collect complete samples of \sne~with redshift higher than \zcompb\seq 0.55-0.6 for a DD budget of \seq 5\per.  %A high budget (\seq 13.5\per) is requested to reach \zcompb\seq 0.65.
@@ -289,7 +292,7 @@ The relations \eqref{eq:zlimsnr} and \eqref{eq:zlimnvisits} are not univocal. A 
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.99\textwidth]{nvisits_zlim.png}
+  \includegraphics[width=0.6\textwidth]{nvisits_zlim.png}
  \caption{Number of visits as a function of the completeness redshift. 235 visits {\it with} the following filter allocation (\nvisitsall)=(2,4,89,121,18) are requested per observing night to reach \zcomp\seq0.9 for a cadence of one day.}\label{fig:nvisits_zlim}
 \end{center}
 \end{figure}
@@ -322,7 +325,7 @@ The season length of observation is a parameter involved in the estimation of th
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.95\textwidth]{seasonlength_nvisits.png}
+  \includegraphics[width=0.5\textwidth]{seasonlength_nvisits.png}
  \caption{Maximal season length as a function of the number of visits.}\label{fig:seasonlength_nvisits}
 \end{center}
 \end{figure}
@@ -345,23 +348,23 @@ Observing 5 fields for ten years up to \zcomp $\sim$ 0.9 would certainly give ac
 \par
 %Building a consistent DDR strategy is not only a matter of adjusting LSST survey settings to stay within a reasonable budgetary envelope.
 %Synergistic
-Spectroscopic datasets from cosmological endeavors overlapping with LSST in area and timing are essential for the success of the supernovae program. They provides enormous added benefits through (a) the follow-up of the full sample of well-measured supernovae (photometric classification), and (b) the measurement of host-galaxy redshifts with high accuracy. Two of the spectroscopic resources contemporaneous with LSST, Primary Focus Spectrograph (PFS \cite{Tamura_2016}) and 4MOST(\cite{4MOST}), may provide guidance in the choice of the depth of the DR survey. The PFS spectroscopic follow-up survey is designed to observe two of LSST DDFs accessible from the Subaru telescope: \cosmos~and \xmm. About 4000 spectra (half of live supernovae and half of host galaxy redshifts) up to $z\sim0.8$ will be collected. The 4MOST Time-Domain Extragalactic Survey (TiDES \cite{TiDES}) is dedicated to the spectroscopic follow-up of extragalactic optical transients and variable sources selected from e.g. LSST. The goal is to collect spectra for up to 30 000 live transients to $z\sim0.5$ and to mesure up to 50 000 host galaxy redshifts up to $z\sim1$. Two sets of fields may then be defined to fully benefit from the synergy with PFS and 4MOST: ultra-deep (\cosmos, \xmm) and deep (\adfs, \cdfs, \elais) fields.
+Spectroscopic datasets from cosmological endeavors overlapping with LSST in area and timing are essential for the success of the supernovae program. They provides enormous added benefits through (a) the follow-up of the full sample of well-measured supernovae (photometric classification), and (b) the measurement of host-galaxy redshifts with high accuracy. Two of the spectroscopic resources contemporaneous with LSST, Primary Focus Spectrograph (PFS \cite{Tamura_2016}) and 4MOST(\cite{4MOST}), may provide guidance in the choice of the depth of the DR survey. The PFS spectroscopic follow-up survey is designed to observe two of LSST DDFs accessible from the Subaru telescope: \cosmos~and \xmm. About 4000 spectra (half of live supernovae and half of host galaxy redshifts) up to $z\sim0.8$ will be collected. The 4MOST Time-Domain Extragalactic Survey (TiDES \cite{TiDES}) is dedicated to the spectroscopic follow-up of extragalactic optical transients and variable sources selected from e.g. LSST. The goal is to collect spectra for up to 30 000 live transients to $z\sim0.5$ and to mesure up to 50 000 host galaxy redshifts up to $z\sim1$. Two sets of LSST fields may then be defined to fully benefit from the synergy with PFS and 4MOST: ultra-deep (\cosmos, \xmm) and deep (\adfs, \cdfs, \elais) fields.
 
-\begin{figure}[htbp]
+\begin{figure*}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{budget_zcomp.png}
+  \includegraphics[width=0.8\textwidth]{budget_zcomp.png}
   \caption{DD budget (top) and total number of \sne~(bottom) as a function of the redshift completeness of deep fields for a set of scenarios where the redshift completeness of ultra-deep fields (\cosmos~and \xmm) is set to 0.9. Subscripts correspond to the number of seasons of observation and superscripts to the redshift limit. Highest \zcomp~values are reached for a minimal strategy composed of two seasons of observations of \cosmos~and \xmm~with a depth of 0.9 plus 4 seasons of observation of the \adfs~ field (1 pointing). Coloured areas correspond to a variation of the number of $y$-band visits (20$\leq N_{visits}^y \leq$ 80).}\label{fig:budget_zcomp}
 \end{center}
-\end{figure}
+\end{figure*}
 
 \par
 On the basis of the above, it is possible to sketch the outlines of a realistic large scale high-$z$ DD survey: (a) a low cadence of observation (one day), (b) a rolling strategy (with a minimal of two seasons of observation per field), and (c) two sets of fields, ultra-deep (\cosmos,\xmm, with \zcomp$\gtrsim$0.8) and deep (\adfs,\cdfs,\elais, with \zcomp$\gtrsim$0.5) fields. The budget and expected number of \sne~for a set of scenario is given on Fig. \ref{fig:budget_zcomp}. A budget of 8-9$\%$ is requested to observe ultra-deep fields up to $z\sim0.9$ and deep fields up to $z\sim0.7$ and to collect 1100 to 2100 \sne. The parameters of the DR strategy (number of fields to observe, redshift completeness for ultra-deep and deep fields, number of seasons per field,budget) have to be tuned on the basis of studies with the synergistic surveys (PSF, TiDES, Euclid, Roman) using accurate joint simulations.
 \par
-The sequence of observations (field/night) of the DR survey must fulfill a couple of constraints. LSST observation of \adfs~has to be contemporaneous with \euclid~(years 2 and 3) and with \roman~(years 5 and 6). Observing multiple fields per night is not optimal if the number of visits per field is high. It may have an impact on the uniformity of the WFD survey (if the total number of DD visits is too high) and on the regularity of the cadence (if a choice has to be made among the DDFs). Overlap of field observations should be minimized. This means that the DR survey should be deterministic with a timely sequence defined in advance. An example of the progress of a DR survey is given on Fig. \ref{fig:timelysequence} for a configuration of 5 fields and a depth of 0.9 and 0.7 for ultra-deep and deep fields, respectivelly. 
+The sequence of observations (field/night) of the DR survey must fulfill a couple of constraints. LSST observation of \adfs~has to be contemporaneous with \euclid~(years 2 and 3) and with \romanspace~(years 5 and 6). Observing multiple fields per night is not optimal if the number of visits per field is high. It may have an impact on the uniformity of the WFD survey (if the total number of DD visits is too high) and on the regularity of the cadence (if a choice has to be made among the DDFs). Overlap of field observations should be minimized. This means that the DR survey should be deterministic with a timely sequence defined in advance. An example of the progress of a DR survey is given on Fig. \ref{fig:timelysequence} for a configuration of 5 fields and a depth of 0.9 and 0.7 for ultra-deep and deep fields, respectivelly. 
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{timely_sequence_235visits.png}
+  \includegraphics[width=0.5\textwidth,height=0.3\textwidth]{timely_sequence_235visits.png}
   \caption{ Cumulative sum of the number of nights (per field and per season) as a function of the time since surveystart (assumed to be late 2023).  The following sequence of observations is considered: \cosmos, \adfs~(x2), \xmm, \cosmos, \adfs~(x2), \elais~(x2), \xmm ,  with  a  maximum  season  length  of  180  days for the deep fields,  a  cadence  of  one day, and ensuring only one field is observed per night.  The fields are required to be observable (airmass $\leq$ 1.5 and 20\textdegree $\leq$ altitude $\leq$ 86.5\textdegree) for at least 2 hours (235 visits) for the ultra-deep fields and 15' (29 visits) for the deep fields.  The overlap, defined as the fraction of nights with more than one field observed during a night, is $\sim7\%$}\label{fig:timelysequence}
 \end{center}
 \end{figure}
@@ -439,6 +442,10 @@ The sequence of observations (field/night) of the DR survey must fulfill a coupl
 % We acknowledge the use of An-External-Tool-like-NED-or-ADS.
 
 %{\it Facilities:} \facility{LSST}
+
+\appendix
+\input{appendix}
+
 
 % Include both collaboration papers and external citations:
 \bibliography{main,lsstdesc}
