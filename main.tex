@@ -159,9 +159,9 @@ The number of exploding supernovae is proportional to the number of season of ob
 It is expected that 5-15$\%$ of the total number of LSST visits will be alloted to the DD program and shared among science topics interested by DD observations (such as AGN, supernovae, ...).  This limited budget is related to the total number of visits per observing night through the relation:
 \begin{equation}\label{eq:ddbudget}
 \begin{aligned}
-DD_{budget} &= N_{visits}^{DD}/N_{visits}^{tot} \\
-  N_{visits}^{DD} &= \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times seaslen^{ij}\times 30/cad^{ij} \\
-  N_{visits,night}^{ij} &=  \sum_{b} N_{visits,night}^{ijb}   , b=g,r,i,z,y
+&DD_{budget} = N_{visits}^{DD}/(N_{visits}^{DD}+ N_{visits}^{non-DD})\\
+ &N_{visits}^{DD} = \sum_{i=1}^{N_{fields}} \sum_{ j=1}^{N_{season}^i} N_{visits,night}^{ij}\times seaslen^{ij}/cad^{ij} \\
+ & N_{visits,night}^{ij} =  \sum_{b} N_{visits,night}^{ijb}   , b=g,r,i,z,y
  \end{aligned}
  \end{equation}
 
@@ -171,7 +171,7 @@ DD_{budget} &= N_{visits}^{DD}/N_{visits}^{tot} \\
   %N_{visits,night}^{ij} &=& \sum_{b} N_{visits,night}^{ijb}   , b=g,r,i,z,y
   %\label{eq:ddbudget}
   %\end{eqnarray}
-where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $seaslen$ the season length, $cad$ the cadence of observation, and $N_{visits, night}^{ij}$ the total number of visits per observing night, per field, and per season. The maximum number of visits per night and per field is fairly strongly dependent on the budget (the number of visits is multiplied by 2.5 when increasing the budget from 6\% to 15\%) but also on the configuration of the survey that may be parametrized by $N_{fields}\times N_{seasons}^{field}$: the number of visits increases by a factor 5 if $N_{fields}\times N_{seasons}^{field}$ decreases from 50 to 10.
+where $N_{fields}$ is the number of DD fields, $N_{season}$ the number of season of observations per field, $seaslen$ the season length (in days), $cad$ the cadence of observation, and $N_{visits, night}^{ij}$ the total number of visits per observing night, per field, and per season. The maximum number of visits per night and per field is fairly strongly dependent on the budget (the number of visits is multiplied by 2.5 when increasing the budget from 6\% to 15\%) but also on the configuration of the survey that may be parametrized by $N_{fields}\times N_{seasons}^{field}$: the number of visits increases by a factor 5 if $N_{fields}\times N_{seasons}^{field}$ decreases from 50 to 10.
 
 \begin{comment}
   We have estimated $N_{visits,night}$ from the following input: cadence of 1 day, season lengths of 6 months, 5 fields observed for 10 or 2 seasons, and a budget of 6, 10 and 15\%.  The conclusion (Tab. \ref{tab:ddbudget}) is that the maximum number of visits per night and per fields is quite dependent on the budget (the number of visits is multiplied by 2.5 when increasing the budget from 6\% to 15\%) but also on the configuration of the survey that may be parametrized by $N_{fields}\times N_{seasons}^{field}$: the number of visits increases by a factor 5 if $N_{fields}\times N_{seasons}^{field}$ decreases from 50 to 10. 
@@ -409,8 +409,8 @@ The sequence of observations (field/night) of the DR survey must fulfill a coupl
 
 % ----------------------------------------------------------------------
 
-\section{Discussion}
-\label{sec:discussion}
+%\section{Discussion}
+%\label{sec:discussion}
 
 
 
