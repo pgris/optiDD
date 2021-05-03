@@ -60,7 +60,7 @@
 \newcommand{\adfb}{{ADF-B}}
 \newcommand{\adfs}{{Euclid/Roman}}
 \newcommand{\euclid}{{Euclid}}
-\newcommand{\romanspace}{{\sc Roman Space Telescope}}
+\newcommand{\romanspace}{{Roman Space Telescope}}
 \newcommand{\wfirst}{{\sc WFIRST}}
 \newcommand{\sne}{{SNe~Ia}}
 \newcommand{\sn}{{SN}}
@@ -249,7 +249,7 @@ impact on the size and depth of the SN sample. The main source of gaps for the D
 \end{figure*}
 
 \par
-The translationnal dithering is expected to affect both the number of well-sampled supernovae and the redshift completeness for each of the HEALPixel of a field. With no dithering, \nsncomp~and \zcompb~distributions are uniform on the whole field area. The dithering tends increase the cadence of observation and to decrease both \nsncomp~and \zcompb~(per HEALPixel). The dithered pointings of the telescope are estimated from the central location of the fields (Tab. \ref{tab:locddf}) and lead to a distribution map of the metrics decreasing as the (HEALPixel center) distance to the central location increases. A more subtle effect is observed (Fig. \ref{fig:dither}) when all the pixel are considered to estimate the total number of supernovae and the 95th percentile redshift completeness. \zcompb~tends to decrease with an increase of the translationnal dither offset (\doffset), with a greater effect for low cadences. The total number of supernovae is the result of two opposite effects, a decrease of the cadence and an increase of the survey area, the later offsetting the former for low cadences and low \doffset values.
+The translationnal dithering is expected to affect both the number of well-sampled supernovae and the redshift completeness for each of the HEALPixel of a field. With no dithering, \nsncomp~and \zcompb~distributions are uniform on the whole field area. The dithering tends increase the cadence of observation and to decrease both \nsncomp~and \zcompb~(per HEALPixel). The dithered pointings of the telescope are estimated from the central location of the fields (Tab. \ref{tab:locddf}) and lead to a distribution map of the metrics decreasing as the (HEALPixel center) distance to the central location increases. A more subtle effect is observed (Fig. \ref{fig:dither}) when all the pixel are considered to estimate the total number of supernovae and the 95th percentile redshift completeness. \zcompb~tends to decrease with an increase of the translationnal dither offset (\doffset), with a greater effect for low cadences. The total number of supernovae is the result of two opposite effects, a decrease of the cadence and an increase of the survey area, the later offsetting the former for low cadences and low \doffset~values.
 
 \begin{figure}[htbp]
   \begin{center}
@@ -327,13 +327,13 @@ We may then use \ref{eq:zliminvisits} and \ref{fig:nvisits_zlim} to estimate the
 \section{Deep Rolling surveys to probe high \zcomp~domains}
 \label{sec:scenario}
 \paragraph{Season length and field location}
-The season length of observation is a parameter involved in the estimation of the budget and the number of well-sampled \sne.  It depends on the position of the field (w.r.t. LSST position) but also on the number of visits per night. The season length may be estimated from a list of night during which a field is visible (i.e. with altitude 20$^o\leq$ alt$\leq$86.5$^o$ and airmass$\leq$1.5) for a duration corresponding to \nvisits.  The results is given on Fig. \ref{fig:seasonlength_nvisits}. The season lengths decrease from 275-200 to 150-100 days for \nvisits~increasing from 1 to 400.  Combining information of sec. \ref{sec:opti} and Fig. \ref{fig:seasonlength_nvisits} lead to the conclusion that low cadences are favored to reach higher \zcomp~values while maximizing the season length.
+An astronomical target is said to be observable if it is visible (i.e. for LSST with altitude 20$^o\leq$ alt$\leq$86.5$^o$ and airmass$\leq$1.5) for some time. The nightly period of visibility depends on the location of a field w.r.t. LSST. The season length may be estimated from a list of night during which a field is observable. It depends on the time of visibility that is the total exposure time of a field. The estimation of the season length as a function of the total number of visits (Fig. \ref{fig:seasonlength_nvisits}) suggests a decrease from 275-200 to 150-100 days when \nvisits~increase from 1 to 400.  Combining information of sec. \ref{sec:opti} and Fig. \ref{fig:seasonlength_nvisits} lead to the conclusion that low cadences are favored to reach higher \zcomp~values while maximizing the season length.
 %This is due to the fact that the minimal \snrb~to reach \zcomp~is independent on the cadence. The corresponding requested number of visits increases with the cadence. This leads to a decrease of the season length.
 
 \begin{figure}[htbp]
 \begin{center}
   \includegraphics[width=0.5\textwidth]{seasonlength_nvisits.png}
- \caption{Maximal season length as a function of the number of visits.}\label{fig:seasonlength_nvisits}
+ \caption{Maximal season length as a function of the number of visits. Fields are observable if the following requirements are met: altitude 20$^o\leq$ alt$\leq$86.5$^o$ and airmass$\leq$1.5.}\label{fig:seasonlength_nvisits}
 \end{center}
 \end{figure}
 
@@ -367,7 +367,7 @@ Spectroscopic datasets from cosmological endeavors overlapping with LSST in area
 \par
 On the basis of the above, it is possible to sketch the outlines of a realistic large scale high-$z$ DD survey: (a) a low cadence of observation (one day), (b) a rolling strategy (with a minimal of two seasons of observation per field), and (c) two sets of fields, ultra-deep (\cosmos,\xmm, with \zcomp$\gtrsim$0.8) and deep (\adfs,\cdfs,\elais, with \zcomp$\gtrsim$0.5) fields. The budget and expected number of \sne~for a set of scenario is given on Fig. \ref{fig:budget_zcomp}. A budget of 8-9$\%$ is requested to observe ultra-deep fields up to $z\sim0.9$ and deep fields up to $z\sim0.7$ and to collect 1100 to 2100 \sne. The parameters of the DR strategy (number of fields to observe, redshift completeness for ultra-deep and deep fields, number of seasons per field,budget) have to be tuned on the basis of studies with the synergistic surveys (PSF, TiDES, Euclid, Roman) using accurate joint simulations.
 \par
-The sequence of observations (field/night) of the DR survey must fulfill a couple of constraints. LSST observation of \adfs~has to be contemporaneous with \euclid~(years 2 and 3) and with \romanspace~(years 5 and 6). Observing multiple fields per night is not optimal if the number of visits per field is high. It may have an impact on the uniformity of the WFD survey (if the total number of DD visits is too high) and on the regularity of the cadence (if a choice has to be made among the DDFs). Overlap of field observations should be minimized. This means that the DR survey should be deterministic with a timely sequence defined in advance. An example of the progress of a DR survey is given on Fig. \ref{fig:timelysequence} for a configuration of 5 fields and a depth of 0.9 and 0.7 for ultra-deep and deep fields, respectivelly. 
+The sequence of observations (field/night) of the DR survey must fulfill a couple of constraints. LSST observation of \adfs~has to be contemporaneous with \euclid~(years 2 and 3) and with \romanspace~(years 5 and 6). Observing multiple fields per night is not optimal if the number of visits per field is high. It may jeopardize the uniformity of the WFD survey (if the total number of DD visits is too high) and have a negative impact on the regularity of the cadence (if a choice has to be made among the DDFs). Overlap of field observations should be minimized. This means that the DR survey should be deterministic with a timely sequence defined in advance. An example of the progress of a DR survey is given on Fig. \ref{fig:timelysequence} for a configuration of 5 fields and a depth of 0.9 and 0.7 for ultra-deep and deep fields, respectivelly. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -423,8 +423,11 @@ The sequence of observations (field/night) of the DR survey must fulfill a coupl
 
 % ----------------------------------------------------------------------
 
-\section{Conclusion}
+\section{Conclusions}
 \label{sec:conclusion}
+In this paper we have presented a set of studies assessing the impact of the LSST Deep-Drilling mini-survey on the size and depth of a sample of well-measured \sne. A comprehensive analysis of the recent LSST simulations has shown that it was difficult to collect a sample of higher resfhift \sne~without exceeding a reasonable budget allocation and that the proposed number of visits (per observing night) had to be adjusted. Reaching higher redshift completeness requires to increase the signal-to-noise ratio of the photometric light curves, while considering band-flux distribution ($z$-dependent), cadence, and observing conditions. We have proposed a method providing the relationship between the optimized number of visits {\it per band}  and the redshift completeness. We used this result to design a set of realistic strategies that would meet the initial requirements: collecting a large sample of well-measured \sne~up to higher redshift while respecting survey design constraints (cadence, budget, number of fields, season length). Synergistic datasets have been taken into account to lead to a Deep Rolling strategy with the following contours: (a) low cadence (one day), (b) rolling strategy (at least two seasons of obervation per field), (c) two sets of fields: ultra-deep (\cosmos, \xmm - \zcomp~$\gtrsim$~0.8) and deep (\adfs, \cdfs, \elais - \zcomp~$\gtrsim$~0.5).
+\par
+The minimal scenario proposed in this paper consists of three fields, two ultra-deep (\cosmos, \xmm, for two seasons) and one deep (\adfs, for four seasons in synergy with \euclid~and \romanspace). The redshift completeness will depend on the DD alloted budget, which is conditionned to the WFD survey time required to meet SRD requirements. It is not clear whether this information will be known prior to the start of the survey. This is why the proposed scenario is flexible and may be adapted according to (potentially changing) circumstances. The DD budget will provide guidance for the depth of the \sne~sample once the number of fields to observe is chosen. Accurate joint studies between LSST and external facilities providing contemporaneous observations (\euclid, \romanspace, Subaru, 4MOST) have to be performed to optimize the depth and size of the \sne~sample collected with the DR survey.
 
 
 
